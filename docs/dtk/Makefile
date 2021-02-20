@@ -1,23 +1,3 @@
-run:
-	poetry run uvicorn --reload alisms:app
-
-freeze:
-	poetry export --without-hashes -f requirements.txt > requirements.txt
-
-format:
-	poetry run black dtk_api
-
-outdated:http_proxy=http://127.0.0.1:8081
-outdated:https_proxy=http://127.0.0.1:8081
-outdated:
-	poetry show -o
-
-update:http_proxy=http://127.0.0.1:8081
-update:https_proxy=http://127.0.0.1:8081
-update:
-	poetry update
-	make freeze
-
 # 使用 pytest 运行测试生成代码
 test-and-gen-type:
 	poetry run pytest -s dtk_api
@@ -36,9 +16,3 @@ test-load:api-file=$(shell pwd)/api.json
 test-load:output=$(shell pwd)/test.json
 test-load:
 	cd $(code-dir) && poetry run python code dtk test --output $(output) $(api-file)
-
-
-publish:http_proxy=http://127.0.0.1:8081
-publish:https_proxy=http://127.0.0.1:8081
-publish:
-	poetry publish --build

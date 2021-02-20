@@ -2,15 +2,10 @@ run:
 	poetry run uvicorn --reload ali_sms_api:app
 
 
-publish:
-	poetry publish --build
-
 download-dysms-api:export api-url=https://api.aliyun.com/api/product/describeApiWithDocList.json\?productName\=Dysmsapi\&productVersion\=2017-05-25
 download-dysms-api:
 	curl $(api-url) -o Dysmsapi.json
 
-format:
-	poetry run black ali_sms_api
 
 gen-code:code-dir=/Users/dabaichi/QiYuTechDev/code
 gen-code:api-file=$(shell pwd)/Dysmsapi.json
