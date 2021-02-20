@@ -22,7 +22,7 @@ class BaseArgs(DataClassJsonMixin):
 
     @staticmethod
     def base_url() -> str:
-        raise NotImplemented
+        raise NotImplementedError
 
     @staticmethod
     def ztk_app_key() -> str:
@@ -32,7 +32,7 @@ class BaseArgs(DataClassJsonMixin):
         app_key = os.getenv("ZTK_APP_KEY", None)
         if app_key is not None:
             return app_key
-        raise NotImplemented
+        raise NotImplementedError
 
     def to_http_query(self, appkey: str) -> str:
         """
