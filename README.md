@@ -8,10 +8,10 @@
 
 ![PyPI - Version](https://img.shields.io/pypi/v/qiyu-api)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/qiyu-api)
-![PyPI - Downloads](https://img.shields.io/pypi/dm/py_apple_signin)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/qiyu-api)
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/qiyu-api)
-![GitHub repo size](https://img.shields.io/github/repo-size/qiyutechdev/py_apple_signin)
-![Lines of code](https://img.shields.io/tokei/lines/github/qiyutechdev/py_apple_signin)
+![GitHub repo size](https://img.shields.io/github/repo-size/qiyutechdev/qiyu-api)
+![Lines of code](https://img.shields.io/tokei/lines/github/qiyutechdev/qiyu-api)
 
 奇遇科技 Python API 集合
 
@@ -20,6 +20,6 @@
 * ztk_api
 * mob_api
 * apns_sdk_py
-* py_apple_signin
+* qiyu-api
 * ali_sms_api
 * dtk_api
