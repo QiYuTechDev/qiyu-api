@@ -14,3 +14,5 @@
 * mob_api
 * apns_sdk_py
 * py_apple_signin
+* ali_sms_api
+* dtk_api
