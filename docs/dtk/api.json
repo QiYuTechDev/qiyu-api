@@ -1,0 +1,1693 @@
+[
+  {
+    "id": "52",
+    "name": "京东商品转链",
+    "address": "https://openapi.dataoke.com/api/dels/jd/kit/promotion-union-convert",
+    "test_word": [
+      {
+        "name": "unionId",
+        "required": "1",
+        "desc": "推客的联盟ID"
+      },
+      {
+        "name": "materialId",
+        "required": "1",
+        "desc": "推广物料url，例如活动链接、商品链接等；不支持仅传入skuid"
+      },
+      {
+        "name": "positionId",
+        "required": "0",
+        "desc": "新增推广位id （不填的话，默认生成一个唯一此接口推广位-名称：微信手Q短链接"
+      },
+      {
+        "name": "childPid",
+        "required": "0",
+        "desc": " 联盟子推客身份标识（不能传入接口调用者自己的pid）"
+      },
+      {
+        "name": "subUnionId",
+        "required": "0",
+        "desc": "子渠道标识，您可自定义传入字母、数字或下划线，最多支持80个字符，该参数会在订单行查询接口中展示"
+      },
+      {
+        "name": "couponUrl",
+        "required": "0",
+        "desc": "优惠券领取链接，在使用优惠券、商品二合一功能时入参，且materialId须为商品详情页链接"
+      },
+      {
+        "name": "chainType",
+        "required": "0",
+        "desc": "转链类型，默认短链，短链有效期60天1：长链2：短链 3：长链+短链，"
+      },
+      {
+        "name": "giftCouponKey",
+        "required": "0",
+        "desc": "礼金批次号"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "51",
+    "name": "京东订单查询",
+    "address": "https://openapi.dataoke.com/api/dels/jd/order/get-official-order-list",
+    "test_word": [
+      {
+        "name": "pageNo",
+        "required": "0",
+        "desc": "页码（默认为1）"
+      },
+      {
+        "name": "pageSize",
+        "required": "0",
+        "desc": "每页记录条数，默认100"
+      },
+      {
+        "name": "type",
+        "required": "1",
+        "desc": "订单时间查询类型(1：下单时间，2：完成时间（购买用户确认收货时间），3：更新时间"
+      },
+      {
+        "name": "childUnionId",
+        "required": "0",
+        "desc": "子推客unionID，传入该值可查询子推客的订单，注意不可和key同时传入。（需联系运营开通PID权限才能拿到数据）"
+      },
+      {
+        "name": "startTime",
+        "required": "1",
+        "desc": "开始时间 格式yyyy-MM-dd HH:mm:ss，与endTime间隔不超过1小时"
+      },
+      {
+        "name": "endTime",
+        "required": "1",
+        "desc": "结束时间 格式yyyy-MM-dd HH:mm:ss，与startTime间隔不超过1小时"
+      },
+      {
+        "name": "fields",
+        "required": "0",
+        "desc": "支持出参数据筛选，逗号分隔，目前可用：goodsInfo（商品信息）,categoryInfo(类目信息）"
+      },
+      {
+        "name": "key",
+        "required": "1",
+        "desc": "工具商传入推客的授权key，可帮助该推客查询订单，注意不可和childUnionid同时传入。（需联系运营开通工具商权限才能拿到数据，请在京东联盟->我的工具->我的API->领取授权KEY中获取key）"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "48",
+    "name": "历史新低商品合集",
+    "address": "https://openapi.dataoke.com/api/goods/get-history-low-price-list",
+    "test_word": [
+      {
+        "name": "pageSize",
+        "required": "1",
+        "desc": "每页返回条数，每页条数支持输入10,20，50,100。默认50条"
+      },
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id：常规分页方式，请直接传入对应页码（比如：1,2,3……）"
+      },
+      {
+        "name": "cids",
+        "required": "0",
+        "desc": "大淘客的一级分类id，如果需要传多个，以英文逗号相隔，如：”1,2,3”。"
+      },
+      {
+        "name": "sort",
+        "required": "1",
+        "desc": "排序方式，默认为0，0-综合排序，1-商品上架时间从高到低，2-销量从高到低，3-领券量从高到低，4-佣金比例从高到低，5-价格（券后价）从高到低，6-价格（券后价）从低到高"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "46",
+    "name": "短视频商品",
+    "address": "https://openapi.dataoke.com/api/delanys/media/video/get-goods-list",
+    "test_word": [
+      {
+        "name": "cid",
+        "required": "1",
+        "desc": "短视频分类id"
+      },
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id：常规分页方式，请直接传入对应页码（比如：1,2,3……）"
+      },
+      {
+        "name": "pageSize",
+        "required": "1",
+        "desc": "每页记录条数：10，20，50，100"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "47",
+    "name": "短视频商品分类",
+    "address": "https://openapi.dataoke.com/api/delanys/media/video/get-category-list",
+    "test_word": [],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "45",
+    "name": "单个品牌详情",
+    "address": "https://openapi.dataoke.com/api/delanys/brand/get-goods-list",
+    "test_word": [
+      {
+        "name": "brandId",
+        "required": "1",
+        "desc": "品牌id"
+      },
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id：常规分页方式，请直接传入对应页码（比如：1,2,3……） 第一页时会携带品牌信息数据"
+      },
+      {
+        "name": "pageSize",
+        "required": "1",
+        "desc": "每页记录条数（每页支持最大记录条数100）"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "44",
+    "name": "品牌栏目",
+    "address": "https://openapi.dataoke.com/api/delanys/brand/get-column-list",
+    "test_word": [
+      {
+        "name": "cid",
+        "required": "1",
+        "desc": "大淘客分类id"
+      },
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id：常规分页方式，请直接传入对应页码（比如：1,2,3……）"
+      },
+      {
+        "name": "pageSize",
+        "required": "1",
+        "desc": " 每页记录条数（每页记录最大支持50，如果参数大于50时取50作为每页记录条数）"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "43",
+    "name": "商品评论",
+    "address": "https://openapi.dataoke.com/api/comment/get-comment-list",
+    "test_word": [
+      {
+        "name": "id",
+        "required": "1",
+        "desc": "大淘客商品id（id和goodsid其中一个必填）"
+      },
+      {
+        "name": "goodsId",
+        "required": "0",
+        "desc": "淘宝商品id（id和goodsid其中一个必填）"
+      },
+      {
+        "name": "type",
+        "required": "0",
+        "desc": "默认：0-全部  评论类型：0-全部；1-含图；2-含视频；"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "42",
+    "name": "店铺转链",
+    "address": "https://openapi.dataoke.com/api/dels/shop/convert",
+    "test_word": [
+      {
+        "name": "sellerId",
+        "required": "1",
+        "desc": "店铺id"
+      },
+      {
+        "name": "pid",
+        "required": "1",
+        "desc": "推广位id"
+      },
+      {
+        "name": "relationId",
+        "required": "0",
+        "desc": "渠道id"
+      },
+      {
+        "name": "shopName",
+        "required": "1",
+        "desc": "店铺名称，用于返回淘口令"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "41",
+    "name": "细分类目榜",
+    "address": "https://openapi.dataoke.com/api/subdivision/get-rank-list",
+    "test_word": [
+      {
+        "name": "subdivisionId",
+        "required": "1",
+        "desc": "细分类目榜分类id（从商品详情获取）"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "39",
+    "name": "折上折",
+    "address": "https://openapi.dataoke.com/api/goods/super-discount-goods",
+    "test_word": [
+      {
+        "name": "pageSize",
+        "required": "1",
+        "desc": "每页返回条数，每页条数支持输入10,20，50,100。默认50条"
+      },
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id：常规分页方式，请直接传入对应页码（比如：1,2,3……）"
+      },
+      {
+        "name": "cids",
+        "required": "0",
+        "desc": "大淘客的一级分类id，如果需要传多个，以英文逗号相隔，如：”1,2,3”。"
+      },
+      {
+        "name": "sort",
+        "required": "1",
+        "desc": "排序方式，默认为0，0-综合排序，1-商品上架时间从高到低，2-销量从高到低，3-领券量从高到低，4-佣金比例从高到低，5-价格（券后价）从高到低，6-价格（券后价）从低到高"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "38",
+    "name": "每日半价",
+    "address": "https://openapi.dataoke.com/api/goods/get-half-price-day",
+    "test_word": [
+      {
+        "name": "sessions",
+        "required": "1",
+        "desc": " 默认为当前场次，场次输入格式，例如02、08、12、13"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "37",
+    "name": "三合一红包接口",
+    "address": "https://openapi.dataoke.com/api/dels/merge-red-envelopes",
+    "test_word": [
+      {
+        "name": "merchantType",
+        "required": "1",
+        "desc": "（1-淘宝红包，2京东红包，3-拼多多红包）"
+      },
+      {
+        "name": "pid",
+        "required": "0",
+        "desc": "推广位ID（大淘客账号下已授权淘宝账号的任一pid，若未填写，则默认使用创建应用时绑定的pid；其中京东pid为联盟子推客身份标识（不能传入接口调用者自己的pid）"
+      },
+      {
+        "name": "unionId",
+        "required": "1",
+        "desc": "选择京东红包时需要填入京东联盟ID（在京东联盟后台个人中心）。其他类型不用传"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "36",
+    "name": "商品历史券后价",
+    "address": "https://openapi.dataoke.com/api/goods/price-trend",
+    "test_word": [
+      {
+        "name": "id",
+        "required": "1",
+        "desc": "在大淘客的在线商品id（已下架的商品id不支持）"
+      },
+      {
+        "name": "goodsId",
+        "required": "0",
+        "desc": "淘宝商品id"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "35",
+    "name": "直播好货",
+    "address": "https://openapi.dataoke.com/api/goods/liveMaterial-goods-list",
+    "test_word": [
+      {
+        "name": "date",
+        "required": "0",
+        "desc": "选择某一天的直播商品数据，默认返回全部参与过直播，且未下架的商品。时间格式：2020-09-16"
+      },
+      {
+        "name": "sort",
+        "required": "0",
+        "desc": "排序方式，默认为0，0-综合排序，1-商品上架时间从高到低，2-销量从高到低，3-领券量从高到低，4-佣金比例从高到低，5-价格（券后价）从高到低，6-价格（券后价）从低到高"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "34",
+    "name": "每日爆品推荐",
+    "address": "https://openapi.dataoke.com/api/goods/explosive-goods-list",
+    "test_word": [
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id：常规分页方式，请直接传入对应页码（比如：1,2,3……）"
+      },
+      {
+        "name": "pageSize",
+        "required": "1",
+        "desc": "每页返回条数，每页条数支持输入10,20，50,100。默认50条"
+      },
+      {
+        "name": "PriceCid",
+        "required": "0",
+        "desc": "价格区间，1表示10~20元区；2表示20~40元区；3表示40元以上区；默认为1"
+      },
+      {
+        "name": "cids",
+        "required": "0",
+        "desc": "大淘客的一级分类id，如果需要传多个，以英文逗号相隔，如：”1,2,3”。1 -女装，2 -母婴，3 -美妆，4 -居家日用，5 -鞋品，6 -美食，7 -文娱车品，8 -数码家电，9 -男装，10 -内衣，11 -箱包，12 -配饰，13 -户外运动，14 -家装家纺。不填默认全部"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "33",
+    "name": "淘系万能解析",
+    "address": "https://openapi.dataoke.com/api/tb-service/parse-content",
+    "test_word": [
+      {
+        "name": "content",
+        "required": "1",
+        "desc": "包含淘口令、链接的文本。优先解析淘口令，再按序解析每个链接，直至解出有效信息。*如果淘口令失效或者不支持的类型的情况，会按顺序解析链接。如果存在解析失败，请再试一次*"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "32",
+    "name": "大淘客独家券商品",
+    "address": "https://openapi.dataoke.com/api/goods/exclusive-goods-list",
+    "test_word": [
+      {
+        "name": "pageSize",
+        "required": "1",
+        "desc": "每页返回条数，每页条数支持输入10,20，50,100。默认50条"
+      },
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id：常规分页方式，请直接传入对应页码（比如：1,2,3……）"
+      },
+      {
+        "name": "cids",
+        "required": "0",
+        "desc": "大淘客的一级分类id，如果需要传多个，以英文逗号相隔，如：”1,2,3”。"
+      },
+      {
+        "name": "sort",
+        "required": "0",
+        "desc": "排序方式，默认为0，0-综合排序，1-商品上架时间从高到低，2-销量从高到低，3-领券量从高到低，4-佣金比例从高到低，5-价格（券后价）从高到低，6-价格（券后价）从低到高"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "31",
+    "name": "官方活动会场转链",
+    "address": "https://openapi.dataoke.com/api/tb-service/activity-link",
+    "test_word": [
+      {
+        "name": "promotionSceneId",
+        "required": "1",
+        "desc": "联盟官方活动ID，从联盟官方活动页获取或从*大淘客官方活动推广接口获取*"
+      },
+      {
+        "name": "pid",
+        "required": "0",
+        "desc": "推广pid，默认为在”我的应用“添加的pid"
+      },
+      {
+        "name": "relationId",
+        "required": "0",
+        "desc": "渠道id将会和传入的pid进行验证，验证通过将正常转链，请确认填入的渠道id是正确的"
+      },
+      {
+        "name": "unionId",
+        "required": "0",
+        "desc": "自定义输入串，英文和数字组成，长度不能大于12个字符，区分不同的推广渠道"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "30",
+    "name": "淘口令转淘口令",
+    "address": "https://openapi.dataoke.com/api/tb-service/twd-to-twd",
+    "test_word": [
+      {
+        "name": "content",
+        "required": "1",
+        "desc": "支持包含文本的淘口令，但最好是一个单独淘口令"
+      },
+      {
+        "name": "pid",
+        "required": "0",
+        "desc": "推广位ID，用户可自由填写当前大淘客账号下已授权淘宝账号的任一pid，若未填写，则默认使用创建应用时绑定的pid"
+      },
+      {
+        "name": "channelId",
+        "required": "0",
+        "desc": "渠道id将会和传入的pid进行验证，验证通过将正常转链，请确认填入的渠道id是正确的"
+      },
+      {
+        "name": "special_id",
+        "required": "0",
+        "desc": "会员运营ID"
+      },
+      {
+        "name": "external_id",
+        "required": "0",
+        "desc": "淘宝客外部用户标记，如自身系统账户ID；微信ID等"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "29",
+    "name": "首单礼金商品",
+    "address": "https://openapi.dataoke.com/api/goods/first-order-gift-money",
+    "test_word": [
+      {
+        "name": "pageSize",
+        "required": "1",
+        "desc": "每页返回条数，每页条数支持输入10,20，50,100,200"
+      },
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id：常规分页方式，请直接传入对应页码（比如：1,2,3……）"
+      },
+      {
+        "name": "cids",
+        "required": "0",
+        "desc": "大淘客的一级分类id，如果需要传多个，以英文逗号相隔，如：”1,2,3”。1 -女装，2 -母婴，3 -美妆，4 -居家日用，5 -鞋品，6 -美食，7 -文娱车品，8 -数码家电，9 -男装，10 -内衣，11 -箱包，12 -配饰，13 -户外运动，14 -家装家纺"
+      },
+      {
+        "name": "sort",
+        "required": "0",
+        "desc": "排序方式，默认为0，0-综合排序，1-商品上架时间从高到低，2-销量从高到低，3-领券量从高到低，4-佣金比例从高到低，5-价格（券后价）从高到低，6-价格（券后价）从低到高"
+      },
+      {
+        "name": "keyWord",
+        "required": "0",
+        "desc": "输入关键词搜索*(新增字段)*"
+      },
+      {
+        "name": "goodsType",
+        "required": "0",
+        "desc": "商品类型1表示大淘客商品2表示联盟商品。默认为1 *（2020.11.4新增字段）*"
+      }
+    ],
+    "version": "v1.1.0"
+  },
+  {
+    "id": "28",
+    "name": "淘口令生成",
+    "address": "https://openapi.dataoke.com/api/tb-service/creat-taokouling",
+    "test_word": [
+      {
+        "name": "text",
+        "required": "1",
+        "desc": "口令弹框内容，长度大于5个字符"
+      },
+      {
+        "name": "url",
+        "required": "1",
+        "desc": "口令跳转目标页，如：https://uland.taobao.com/，*必须以https开头*，可以是二合一链接、长链接、短链接等各种淘宝高佣链接；支持渠道备案链接。* 该参数需要进行Urlencode编码后传入*"
+      },
+      {
+        "name": "logo",
+        "required": "0",
+        "desc": "口令弹框logoURL"
+      },
+      {
+        "name": "userId",
+        "required": "0",
+        "desc": "生成口令的淘宝用户ID，非必传参数"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "27",
+    "name": "订单查询接口",
+    "address": "https://openapi.dataoke.com/api/tb-service/get-order-details",
+    "test_word": [
+      {
+        "name": "positionIndex",
+        "required": "0",
+        "desc": "位点，第一页数据返回里面有个这个字段，查第二页的数据的时候就传过去"
+      },
+      {
+        "name": "pageSize",
+        "required": "0",
+        "desc": "页大小，默认20，1~100"
+      },
+      {
+        "name": "memberType",
+        "required": "0",
+        "desc": "推广者角色类型,2:二方，3:三方，不传，表示所有角色"
+      },
+      {
+        "name": "tkStatus",
+        "required": "0",
+        "desc": "淘客订单状态，12-付款，13-关闭，14-确认收货，3-结算成功;不传，表示所有状态"
+      },
+      {
+        "name": "endTime",
+        "required": "1",
+        "desc": "订单查询结束时间，订单开始时间至订单结束时间，*中间时间段日常要求不超过3个小时，但如618、双11、年货节等大促期间预估时间段不可超过20分钟，超过会提示错误，调用时请务必注意时间段的选择，以保证亲能正常调用！*  时间格式：YYYY-MM-DD HH:MM:SS"
+      },
+      {
+        "name": "startTime",
+        "required": "1",
+        "desc": "订单查询开始时间。时间格式：YYYY-MM-DD HH:MM:SS"
+      },
+      {
+        "name": "jumpType",
+        "required": "0",
+        "desc": "跳转类型，当向前或者向后翻页必须提供,-1: 向前翻页,1：向后翻页"
+      },
+      {
+        "name": "pageNo",
+        "required": "0",
+        "desc": "第几页，默认1，1~100"
+      },
+      {
+        "name": "orderScene",
+        "required": "0",
+        "desc": "场景订单场景类型，1:常规订单，2:渠道订单，3:会员运营订单，默认为1"
+      },
+      {
+        "name": "queryType",
+        "required": "1",
+        "desc": "查询时间类型，1：按照订单淘客创建时间查询，2:按照订单淘客付款时间查询，3:按照订单淘客结算时间查询"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "26",
+    "name": "淘口令解析",
+    "address": "https://openapi.dataoke.com/api/tb-service/parse-taokouling",
+    "test_word": [
+      {
+        "name": "content",
+        "required": "1",
+        "desc": "包含淘口令的文本。* 若文本中有多个淘口令，仅解析第一个。（目前仅支持商品口令和二合一券口令）* "
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "7",
+    "name": "高效转链",
+    "address": "https://openapi.dataoke.com/api/tb-service/get-privilege-link",
+    "test_word": [
+      {
+        "name": "goodsId",
+        "required": "1",
+        "desc": "淘宝商品id"
+      },
+      {
+        "name": "couponId",
+        "required": "0",
+        "desc": "商品的优惠券ID，一个商品在联盟可能有多个优惠券，可通过填写该参数的方式选择使用的优惠券，请确认优惠券ID正确，否则无法正常跳转"
+      },
+      {
+        "name": "pid",
+        "required": "0",
+        "desc": "推广位ID，用户可自由填写当前大淘客账号下已授权淘宝账号的任一pid，若未填写，则默认使用创建应用时绑定的pid"
+      },
+      {
+        "name": "channelId",
+        "required": "0",
+        "desc": "渠道id将会和传入的pid进行验证，验证通过将正常转链，请确认填入的渠道id是正确的 *channelId对应联盟的relationId*"
+      },
+      {
+        "name": "specialId",
+        "required": "0",
+        "desc": "会员运营id"
+      },
+      {
+        "name": "externalId",
+        "required": "0",
+        "desc": "淘宝客外部用户标记，如自身系统账户ID；微信ID等"
+      },
+      {
+        "name": "rebateType",
+        "required": "0",
+        "desc": "付定返红包，0.不使用付定返红包，1.参与付定返红包"
+      }
+    ],
+    "version": "v1.3.1"
+  },
+  {
+    "id": "15",
+    "name": "9.9包邮精选",
+    "address": "https://openapi.dataoke.com/api/goods/nine/op-goods-list",
+    "test_word": [
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id：常规分页方式，请直接传入对应页码（比如：1,2,3……）"
+      },
+      {
+        "name": "pageSize",
+        "required": "1",
+        "desc": "每页条数：默认为20，最大值100"
+      },
+      {
+        "name": "nineCid",
+        "required": "1",
+        "desc": "9.9精选的类目id，分类id请求详情：*-1-精选，1 -5.9元区，2 -9.9元区，3 -19.9元区（调整字段）*"
+      }
+    ],
+    "version": "v2.0.0"
+  },
+  {
+    "id": "23",
+    "name": "咚咚抢",
+    "address": "https://openapi.dataoke.com/api/category/ddq-goods-list",
+    "test_word": [
+      {
+        "name": "roundTime",
+        "required": "0",
+        "desc": "默认为当前场次，场次时间输入方式：yyyy-mm-dd hh:mm:ss"
+      }
+    ],
+    "version": "v1.2.1"
+  },
+  {
+    "id": "6",
+    "name": "各大榜单",
+    "address": "https://openapi.dataoke.com/api/goods/get-ranking-list",
+    "test_word": [
+      {
+        "name": "rankType",
+        "required": "1",
+        "desc": "榜单类型，1.实时榜 2.全天榜 3.热推榜 4.复购榜 5.热词飙升榜 6.热词排行榜 7.综合热搜榜"
+      },
+      {
+        "name": "cid",
+        "required": "0",
+        "desc": "大淘客一级类目id，仅对实时榜单、全天榜单有效"
+      },
+      {
+        "name": "pageSize",
+        "required": "0",
+        "desc": "每页条数返回条数（支持10,20.50，默认返回20条）"
+      },
+      {
+        "name": "pageId",
+        "required": "0",
+        "desc": "分页id：常规分页方式，请直接传入对应页码（比如：1,2,3……）。*超过200条，分页返回为空*"
+      }
+    ],
+    "version": "v1.3.0"
+  },
+  {
+    "id": "25",
+    "name": "朋友圈文案",
+    "address": "https://openapi.dataoke.com/api/goods/friends-circle-list",
+    "test_word": [
+      {
+        "name": "pageSize",
+        "required": "0",
+        "desc": "每页条数，默认为100，若小于10，则按10条处理，每页条数仅支持输入10,50,100"
+      },
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id，默认为1，支持传统的页码分页方式"
+      },
+      {
+        "name": "sort",
+        "required": "0",
+        "desc": "排序方式，默认为0，0-综合排序，1-商品上架时间从高到低，2-销量从高到低，3-领券量从高到低，4-佣金比例从高到低，5-价格（券后价）从高到低，6-价格（券后价）从低到高"
+      },
+      {
+        "name": "subcid",
+        "required": "0",
+        "desc": "大淘客的二级类目id，通过超级分类API获取。仅允许传一个二级id，当一级类目id和二级类目id同时传入时，会自动忽略二级类目id"
+      },
+      {
+        "name": "pre",
+        "required": "0",
+        "desc": "是否预告商品，1-预告商品，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "freeshipRemoteDistrict",
+        "required": "0",
+        "desc": "偏远地区包邮，1-是，0-非偏远地区，不填默认所有商品"
+      },
+      {
+        "name": "goodsId",
+        "required": "0",
+        "desc": "大淘客id或淘宝id，查询单个商品是否有朋友圈文案，如果有，则返回商品信息及朋友圈文案，如果没有，显示10006错误 "
+      },
+      {
+        "name": "cid",
+        "required": "0",
+        "desc": "大淘客的一级分类id，如6、4"
+      }
+    ],
+    "version": "v1.3.0"
+  },
+  {
+    "id": "21",
+    "name": "精选专题",
+    "address": "https://openapi.dataoke.com/api/goods/topic/catalogue",
+    "test_word": [],
+    "version": "v1.1.0"
+  },
+  {
+    "id": "22",
+    "name": "专题商品",
+    "address": "https://openapi.dataoke.com/api/goods/topic/goods-list",
+    "test_word": [
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id，默认为1，支持传统的页码分页方式和scroll_id分页方式，根据用户自身需求传入值。示例1：商品入库，则首次传入1，后续传入接口第一次返回的pageid，接口将持续返回符合条件的完整商品列表，该方式可以避免入库商品重复；示例2：根据pagesize和totalNum计算出总页数，按照需求返回指定页的商品（该方式可能在临近页取到重复商品）"
+      },
+      {
+        "name": "pageSize",
+        "required": "0",
+        "desc": "每页条数，默认为100，大于100按100处理"
+      },
+      {
+        "name": "topicId",
+        "required": "1",
+        "desc": "专辑id，通过精选专辑API获取的活动id"
+      }
+    ],
+    "version": "v1.2.2"
+  },
+  {
+    "id": "24",
+    "name": "官方活动推广",
+    "address": "https://openapi.dataoke.com/api/category/get-tb-topic-list",
+    "test_word": [
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id，支持传统的页码分页方式"
+      },
+      {
+        "name": "pageSize",
+        "required": "0",
+        "desc": "每页条数，默认为20"
+      },
+      {
+        "name": "type",
+        "required": "0",
+        "desc": "输出的端口类型：0.全部（默认），1.PC，2.无线"
+      },
+      {
+        "name": "channelID",
+        "required": "0",
+        "desc": "阿里妈妈上申请的渠道id"
+      }
+    ],
+    "version": "v1.2.0"
+  },
+  {
+    "id": "17",
+    "name": "品牌库",
+    "address": "https://openapi.dataoke.com/api/tb-service/get-brand-list",
+    "test_word": [
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "页码"
+      },
+      {
+        "name": "pageSize",
+        "required": "0",
+        "desc": "每页条数，默认为20，最大值100"
+      }
+    ],
+    "version": "v1.1.2"
+  },
+  {
+    "id": "18",
+    "name": "联想词",
+    "address": "https://openapi.dataoke.com/api/goods/search-suggestion",
+    "test_word": [
+      {
+        "name": "keyWords",
+        "required": "1",
+        "desc": "关键词"
+      },
+      {
+        "name": "type",
+        "required": "1",
+        "desc": "当前搜索API类型：1.大淘客搜索 2.联盟搜索 3.超级搜索"
+      }
+    ],
+    "version": "v1.0.2"
+  },
+  {
+    "id": "14",
+    "name": "超级搜索",
+    "address": "https://openapi.dataoke.com/api/goods/list-super-goods",
+    "test_word": [
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "请求的页码，默认参数1"
+      },
+      {
+        "name": "pageSize",
+        "required": "1",
+        "desc": "每页条数，默认为20，最大值100"
+      },
+      {
+        "name": "keyWords",
+        "required": "1",
+        "desc": "关键词搜索"
+      },
+      {
+        "name": "type",
+        "required": "1",
+        "desc": "搜索类型：0-综合结果，1-大淘客商品，2-联盟商品"
+      },
+      {
+        "name": "tmall",
+        "required": "0",
+        "desc": "是否天猫商品：1-天猫商品，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "haitao",
+        "required": "0",
+        "desc": "是否海淘商品：1-海淘商品，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "sort",
+        "required": "0",
+        "desc": "排序字段信息 销量（total_sales） 价格（price），排序_des（降序），排序_asc（升序），示例：升序查询销量total_sales_asc"
+      },
+      {
+        "name": "specialId",
+        "required": "0",
+        "desc": "会员运营id"
+      },
+      {
+        "name": "channelId",
+        "required": "0",
+        "desc": "渠道id将会和传入的pid进行验证，验证通过将正常转链，请确认填入的渠道id是正确的*channelId对应联盟的relationId*"
+      }
+    ],
+    "version": "v1.3.0"
+  },
+  {
+    "id": "16",
+    "name": "猜你喜欢",
+    "address": "https://openapi.dataoke.com/api/goods/list-similer-goods-by-open",
+    "test_word": [
+      {
+        "name": "id",
+        "required": "1",
+        "desc": "大淘客的商品id"
+      },
+      {
+        "name": "size",
+        "required": "0",
+        "desc": "每页条数，默认10 ， 最大值100"
+      }
+    ],
+    "version": "v1.2.2"
+  },
+  {
+    "id": "5",
+    "name": "商品列表",
+    "address": "https://openapi.dataoke.com/api/goods/get-goods-list",
+    "test_word": [
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "默认为1，支持传统的页码分页方式和scroll_id分页方式，根据用户自身需求传入值。示例1：商品入库，则首次传入1，后续传入接口返回的pageid，接口将持续返回符合条件的完整商品列表，该方式可以避免入口商品重复；示例2：根据pagesize和totalNum计算出总页数，按照需求返回指定页的商品（该方式可能在临近页取到重复商品）"
+      },
+      {
+        "name": "pageSize",
+        "required": "0",
+        "desc": "每页条数，默认为100，最大值200，若小于10，则按10条处理，每页条数仅支持输入10,50,100,200"
+      },
+      {
+        "name": "sort",
+        "required": "0",
+        "desc": "排序方式，默认为0，0-综合排序，1-商品上架时间从高到低，2-销量从高到低，3-领券量从高到低，4-佣金比例从高到低，5-价格（券后价）从高到低，6-价格（券后价）从低到高"
+      },
+      {
+        "name": "cids",
+        "required": "0",
+        "desc": "大淘客的一级分类id，如果需要传多个，以英文逗号相隔，如：”1,2,3”。当一级类目id和二级类目id同时传入时，会自动忽略二级类目id"
+      },
+      {
+        "name": "subcid",
+        "required": "0",
+        "desc": "大淘客的二级类目id，通过超级分类API获取。仅允许传一个二级id，当一级类目id和二级类目id同时传入时，会自动忽略二级类目id"
+      },
+      {
+        "name": "juHuaSuan",
+        "required": "0",
+        "desc": "1-聚划算商品，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "taoQiangGou",
+        "required": "0",
+        "desc": "1-淘抢购商品，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "tmall",
+        "required": "0",
+        "desc": "1-天猫商品， 0-非天猫商品，不填默认所有商品"
+      },
+      {
+        "name": "tchaoshi",
+        "required": "0",
+        "desc": "1-天猫超市商品， 0-所有商品，不填默认为0"
+      },
+      {
+        "name": "goldSeller",
+        "required": "0",
+        "desc": "1-金牌卖家商品，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "haitao",
+        "required": "0",
+        "desc": "1-海淘商品， 0-所有商品，不填默认为0"
+      },
+      {
+        "name": "pre",
+        "required": "0",
+        "desc": "1-预告商品，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "brand",
+        "required": "0",
+        "desc": "1-品牌商品，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "brandIds",
+        "required": "0",
+        "desc": "当brand传入0时，再传入brandIds可能无法获取结果。品牌id可以传多个，以英文逗号隔开，如：”345,321,323”"
+      },
+      {
+        "name": "priceLowerLimit",
+        "required": "0",
+        "desc": "价格（券后价）下限"
+      },
+      {
+        "name": "priceUpperLimit",
+        "required": "0",
+        "desc": "价格（券后价）上限"
+      },
+      {
+        "name": "commissionRateLowerLimit",
+        "required": "0",
+        "desc": "最低佣金比率"
+      },
+      {
+        "name": "monthSalesLowerLimit",
+        "required": "0",
+        "desc": "最低月销量"
+      },
+      {
+        "name": "specialId",
+        "required": "0",
+        "desc": "商品卖点，1.拍多件活动；2.多买多送；3.限量抢购；4.额外满减；6.买商品礼赠"
+      },
+      {
+        "name": "freeshipRemoteDistrict",
+        "required": "0",
+        "desc": "偏远地区包邮，1-是，0-非偏远地区，不填默认所有商品"
+      },
+      {
+        "name": "couponPriceLowerLimit",
+        "required": "0",
+        "desc": "最低优惠券面额"
+      },
+      {
+        "name": "preSale",
+        "required": "0",
+        "desc": "1-活动预售商品，0-所有商品，不填默认为0。*（10.30新增字段）*"
+      }
+    ],
+    "version": "v1.2.4"
+  },
+  {
+    "id": "8",
+    "name": "单品详情",
+    "address": "https://openapi.dataoke.com/api/goods/get-goods-details",
+    "test_word": [
+      {
+        "name": "id",
+        "required": "1",
+        "desc": "大淘客商品id，请求时id或goodsId必填其中一个，若均填写，将优先查找当前单品id"
+      },
+      {
+        "name": "goodsId",
+        "required": "0",
+        "desc": "淘宝商品id，id或goodsId必填其中一个，若均填写，将优先查找当前单品id"
+      }
+    ],
+    "version": "v1.2.3"
+  },
+  {
+    "id": "9",
+    "name": "大淘客搜索",
+    "address": "https://openapi.dataoke.com/api/goods/get-dtk-search-goods",
+    "test_word": [
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id，默认为1，支持传统的页码分页方式和scroll_id分页方式，根据用户自身需求传入值。示例1：商品入库，则首次传入1，后续传入接口返回的pageid，接口将持续返回符合条件的完整商品列表，该方式可以避免入口商品重复；示例2：根据pagesize和totalNum计算出总页数，按照需求返回指定页的商品（该方式可能在临近页取到重复商品）"
+      },
+      {
+        "name": "pageSize",
+        "required": "1",
+        "desc": "每页条数，默认为100，最大值200，若小于10，则按10条处理，每页条数仅支持输入10,50,100,200"
+      },
+      {
+        "name": "keyWords",
+        "required": "1",
+        "desc": "关键词搜索"
+      },
+      {
+        "name": "cids",
+        "required": "0",
+        "desc": "大淘客的一级分类id，如果需要传多个，以英文逗号相隔，如：”1,2,3”。当一级类目id和二级类目id同时传入时，会自动忽略二级类目id，一级分类id请求详情：1 -女装，2 -母婴，3 -美妆，4 -居家日用，5 -鞋品，6 -美食，7 -文娱车品，8 -数码家电，9 -男装，10 -内衣，11 -箱包，12 -配饰，13 -户外运动，14 -家装家纺"
+      },
+      {
+        "name": "subcid",
+        "required": "0",
+        "desc": "大淘客的二级类目id，通过超级分类API获取。仅允许传一个二级id，当一级类目id和二级类目id同时传入时，会自动忽略二级类目id"
+      },
+      {
+        "name": "juHuaSuan",
+        "required": "0",
+        "desc": "是否聚划算，1-聚划算商品，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "taoQiangGou",
+        "required": "0",
+        "desc": "是否淘抢购，1-淘抢购商品，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "tmall",
+        "required": "0",
+        "desc": "是否天猫商品，1-天猫商品，0-非天猫商品，不填默认为所有商品"
+      },
+      {
+        "name": "tchaoshi",
+        "required": "0",
+        "desc": "是否天猫超市商品，1-天猫超市商品，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "goldSeller",
+        "required": "0",
+        "desc": "是否金牌卖家，1-金牌卖家，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "haitao",
+        "required": "0",
+        "desc": "是否海淘商品，1-海淘商品，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "brand",
+        "required": "0",
+        "desc": "是否品牌商品，1-品牌商品，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "brandIds",
+        "required": "0",
+        "desc": "品牌id，当brand传入0时，再传入brandIds将获取不到结果。品牌id可以传多个，以英文逗号隔开，如：”345,321,323”"
+      },
+      {
+        "name": "priceLowerLimit",
+        "required": "0",
+        "desc": "价格（券后价）下限"
+      },
+      {
+        "name": "priceUpperLimit",
+        "required": "0",
+        "desc": "价格（券后价）上限"
+      },
+      {
+        "name": "commissionRateLowerLimit",
+        "required": "0",
+        "desc": "最低佣金比率"
+      },
+      {
+        "name": "sort",
+        "required": "0",
+        "desc": "排序字段，默认为0，0-综合排序，1-商品上架时间从新到旧，2-销量从高到低，3-领券量从高到低，4-佣金比例从高到低，5-价格（券后价）从高到低，6-价格（券后价）从低到高"
+      },
+      {
+        "name": "freeshipRemoteDistrict",
+        "required": "0",
+        "desc": "偏远地区包邮，1-是，0-非偏远地区，不填默认所有商品"
+      },
+      {
+        "name": "couponPriceLowerLimit",
+        "required": "0",
+        "desc": "最低优惠券面额"
+      },
+      {
+        "name": "monthSalesLowerLimit",
+        "required": "0",
+        "desc": "最低月销量"
+      }
+    ],
+    "version": "v2.1.2"
+  },
+  {
+    "id": "12",
+    "name": "定时拉取",
+    "address": "https://openapi.dataoke.com/api/goods/pull-goods-by-time",
+    "test_word": [
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id，默认为1，支持传统的页码分页方式和scroll_id分页方式，根据用户自身需求传入值。示例1：商品入库，则首次传入1，后续传入接口返回的pageid，接口将持续返回符合条件的完整商品列表，该方式可以避免入口商品重复；示例2：根据pagesize和totalNum计算出总页数，按照需求返回指定页的商品（该方式可能在临近页取到重复商品）"
+      },
+      {
+        "name": "pageSize",
+        "required": "0",
+        "desc": "每页条数，默认为100，最大值200，若小于10，则按10条处理，每页条数仅支持输入10,50,100,200"
+      },
+      {
+        "name": "cid",
+        "required": "0",
+        "desc": "大淘客的一级分类id。当一级类目id和二级类目id同时传入时，会自动忽略二级类目id"
+      },
+      {
+        "name": "subcid",
+        "required": "0",
+        "desc": "大淘客的二级类目id，通过超级分类API获取。仅允许传一个二级id，当一级类目id和二级类目id同时传入时，会自动忽略二级类目id"
+      },
+      {
+        "name": "pre",
+        "required": "0",
+        "desc": "是否预告商品，1-预告商品，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "sort",
+        "required": "0",
+        "desc": "排序方式，默认为0，0-综合排序，1-商品上架时间从新到旧，2-销量从高到低，3-领券量从高到低，4-佣金比例从高到低，5-价格（券后价）从高到低，6-价格（券后价）从低到高"
+      },
+      {
+        "name": "startTime",
+        "required": "0",
+        "desc": "开始时间，格式为yy-mm-dd hh:mm:ss，商品下架的时间大于等于开始时间"
+      },
+      {
+        "name": "endTime",
+        "required": "0",
+        "desc": "结束时间，默认为请求的时间，商品下架的时间小于等于结束时间"
+      },
+      {
+        "name": "freeshipRemoteDistrict",
+        "required": "0",
+        "desc": "偏远地区包邮，1-是，0-非偏远地区，不填默认所有商品"
+      }
+    ],
+    "version": "v1.2.3"
+  },
+  {
+    "id": "4",
+    "name": "热搜记录",
+    "address": "https://openapi.dataoke.com/api/category/get-top100",
+    "test_word": [],
+    "version": "v1.0.1"
+  },
+  {
+    "id": "11",
+    "name": "失效商品",
+    "address": "https://openapi.dataoke.com/api/goods/get-stale-goods-by-time",
+    "test_word": [
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id，默认为1，支持传统的页码分页方式和scroll_id分页方式，根据用户自身需求传入值。示例1：商品入库，则首次传入1，后续传入接口返回的pageid，接口将持续返回符合条件的完整商品列表，该方式可以避免入口商品重复；示例2：根据pagesize和totalNum计算出总页数，按照需求返回指定页的商品（该方式可能在临近页取到重复商品）"
+      },
+      {
+        "name": "pageSize\t",
+        "required": "0",
+        "desc": ""
+      },
+      {
+        "name": "startTime\t",
+        "required": "0",
+        "desc": ""
+      },
+      {
+        "name": "endTime",
+        "required": "0",
+        "desc": "结束时间，默认为请求的时间，商品下架的时间小于等于结束时间，结束时间需要在当日"
+      }
+    ],
+    "version": "v1.0.1"
+  },
+  {
+    "id": "3",
+    "name": "商品更新",
+    "address": "https://openapi.dataoke.com/api/goods/get-newest-goods",
+    "test_word": [
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id，默认为1，支持传统的页码分页方式和scroll_id分页方式，根据用户自身需求传入值。示例1：商品入库，则首次传入1，后续传入接口返回的pageid，接口将持续返回符合条件的完整商品列表，该方式可以避免入口商品重复；示例2：根据pagesize和totalNum计算出总页数，按照需求返回指定页的商品（该方式可能在临近页取到重复商品）"
+      },
+      {
+        "name": "pageSize",
+        "required": "1",
+        "desc": "每页条数，默认为100，最大值200，若小于10，则按10条处理，每页条数仅支持输入10,50,100,200"
+      },
+      {
+        "name": "startTime",
+        "required": "0",
+        "desc": "商品上架开始时间，请求格式：yyyy-MM-dd HH:mm:ss"
+      },
+      {
+        "name": "endTime",
+        "required": "0",
+        "desc": "商品上架结束时间，请求格式：yyyy-MM-dd HH:mm:ss"
+      },
+      {
+        "name": "cids",
+        "required": "0",
+        "desc": "大淘客的一级分类id，如果需要传多个，以英文逗号相隔，如：”1,2,3”。当一级类目id和二级类目id同时传入时，会自动忽略二级类目id，1 -女装，2 -母婴，3 -美妆，4 -居家日用，5 -鞋品，6 -美食，7 -文娱车品，8 -数码家电，9 -男装，10 -内衣，11 -箱包，12 -配饰，13 -户外运动，14 -家装家纺"
+      },
+      {
+        "name": "subcid",
+        "required": "0",
+        "desc": "大淘客的二级类目id，通过超级分类API获取。仅允许传一个二级id，当一级类目id和二级类目id同时传入时，会自动忽略二级类目id"
+      },
+      {
+        "name": "juHuaSuan",
+        "required": "0",
+        "desc": "1-聚划算商品，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "taoQiangGou",
+        "required": "0",
+        "desc": "1-淘抢购商品，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "tmall",
+        "required": "0",
+        "desc": "1-天猫商品，0-非天猫商品，不填默认全部商品"
+      },
+      {
+        "name": "tchaoshi",
+        "required": "0",
+        "desc": "1-天猫超市商品，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "goldSeller",
+        "required": "0",
+        "desc": "1-金牌卖家，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "haitao",
+        "required": "0",
+        "desc": "1-海淘，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "brand",
+        "required": "0",
+        "desc": "1-品牌，0-所有商品，不填默认为0"
+      },
+      {
+        "name": "brandIds",
+        "required": "0",
+        "desc": "品牌id，当brand传入0时，再传入brandIds将获取不到结果。品牌id可以传多个，以英文逗号隔开，如：”345,321,323”"
+      },
+      {
+        "name": "priceLowerLimit",
+        "required": "0",
+        "desc": "价格（券后价）下限"
+      },
+      {
+        "name": "priceUpperLimit",
+        "required": "0",
+        "desc": "价格（券后价）上限"
+      },
+      {
+        "name": "couponPriceLowerLimit",
+        "required": "0",
+        "desc": "最低优惠券面额"
+      },
+      {
+        "name": "commissionRateLowerLimit",
+        "required": "0",
+        "desc": "最低佣金比率"
+      },
+      {
+        "name": "monthSalesLowerLimit",
+        "required": "0",
+        "desc": "最低月销量"
+      },
+      {
+        "name": "sort",
+        "required": "0",
+        "desc": "排序字段，默认为0，0-综合排序，1-商品上架时间从新到旧，2-销量从高到低，3-领券量从高到低，4-佣金比例从高到低，5-价格（券后价）从高到低，6-价格（券后价）从低到高"
+      },
+      {
+        "name": "preSale",
+        "required": "0",
+        "desc": "1-活动预售商品，0-所有商品，不填默认为0。*（2020.10.30号新增字段）*"
+      }
+    ],
+    "version": "v1.2.0"
+  },
+  {
+    "id": "10",
+    "name": "超级分类",
+    "address": "https://openapi.dataoke.com/api/category/get-super-category",
+    "test_word": [],
+    "version": "v1.1.0"
+  },
+  {
+    "id": "13",
+    "name": "联盟搜索",
+    "address": "https://openapi.dataoke.com/api/tb-service/get-tb-service",
+    "test_word": [
+      {
+        "name": "pageNo",
+        "required": "1",
+        "desc": "第几页，默认1"
+      },
+      {
+        "name": "pageSize",
+        "required": "1",
+        "desc": "每页条数， 默认20，范围值1~100"
+      },
+      {
+        "name": "keyWords",
+        "required": "1",
+        "desc": "查询词"
+      },
+      {
+        "name": "sort",
+        "required": "0",
+        "desc": "排序指标：销量（total_sales），淘客佣金比率（tk_rate）， 累计推广量（tk_total_sales），总支出佣金（tk_total_commi），价格（price）,排序方式：排序_des（降序），排序_asc（升序）,示例：升序查询销量：total_sales_asc"
+      },
+      {
+        "name": "source",
+        "required": "0",
+        "desc": "是否商城商品，设置为1表示该商品是属于淘宝商城商品，设置为非1或不设置表示不判断这个属性（和overseas字段冲突，若已请求source，请勿再请求overseas）"
+      },
+      {
+        "name": "overseas",
+        "required": "0",
+        "desc": "是否海外商品，设置为1表示该商品是属于海外商品，设置为非1或不设置表示不判断这个属性（和source字段冲突，若已请求overseas，请勿再请求source）"
+      },
+      {
+        "name": "endPrice",
+        "required": "0",
+        "desc": "折扣价范围上限，单位：元"
+      },
+      {
+        "name": "startPrice",
+        "required": "0",
+        "desc": "折扣价范围下限，单位：元"
+      },
+      {
+        "name": "startTkRate",
+        "required": "0",
+        "desc": "媒体淘客佣金比率下限，如：1234表示12.34%"
+      },
+      {
+        "name": "endTkRate",
+        "required": "0",
+        "desc": "商品筛选-淘客佣金比率上限，如：1234表示12.34%"
+      },
+      {
+        "name": "hasCoupon",
+        "required": "0",
+        "desc": "是否有优惠券，设置为true表示该商品有优惠券，设置为false或不设置表示不判断这个属性"
+      },
+      {
+        "name": "specialId",
+        "required": "0",
+        "desc": "会员运营id"
+      },
+      {
+        "name": "channelId",
+        "required": "0",
+        "desc": "渠道id将会和传入的pid进行验证，验证通过将正常转链，请确认填入的渠道id是正确的*channelId对应联盟的relationId*"
+      }
+    ],
+    "version": "v2.1.0"
+  },
+  {
+    "id": "1",
+    "name": "我的收藏",
+    "address": "https://openapi.dataoke.com/api/goods/get-collection-list",
+    "test_word": [
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "默认为1，支持传统的页码分页方式和scroll_id分页方式，根据用户自身需求传入值。示例1：商品入库，则首次传入1，后续传入接口返回的pageid，接口将持续返回符合条件的完整商品列表，该方式可以避免入口商品重复；示例2：根据pagesize和totalNum计算出总页数，按照需求返回指定页的商品（该方式可能在临近页取到重复商品）"
+      },
+      {
+        "name": "pageSize",
+        "required": "0",
+        "desc": "每页条数，默认为100，最大值200，若小于10，则按10条处理，每页条数仅支持输入10,50,100,200"
+      },
+      {
+        "name": "cid",
+        "required": "0",
+        "desc": "商品在大淘客的一级分类id，如果需要传多个，以英文逗号相隔，如：”1,2,3”。当一级类目id和二级类目id同时传入时，会自动忽略二级类目id，1 -女装，2 -母婴，3 -美妆，4 -居家日用，5 -鞋品，6 -美食，7 -文娱车品，8 -数码家电，9 -男装，10 -内衣，11 -箱包，12 -配饰，13 -户外运动，14 -家装家纺"
+      },
+      {
+        "name": "trailerType",
+        "required": "0",
+        "desc": "是否返回预告商品，1为预告商品，0为在线商品，不填则全部商品"
+      },
+      {
+        "name": "sort",
+        "required": "0",
+        "desc": "排序字段，默认为0，0-综合排序，1-商品上架时间从高到低，2-销量从高到低，3-领券量从高到低，4-佣金比例从高到低，5-价格（券后价）从高到低，6-价格（券后价）从低到高"
+      },
+      {
+        "name": "collectionTimeOrder",
+        "required": "0",
+        "desc": "加入收藏时间"
+      }
+    ],
+    "version": "v1.0.1"
+  },
+  {
+    "id": "2",
+    "name": "我发布的商品",
+    "address": "https://openapi.dataoke.com/api/goods/get-owner-goods",
+    "test_word": [
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id，默认为1，支持传统的页码分页方式和scroll_id分页方式，根据用户自身需求传入值。示例1：商品入库，则首次传入1，后续传入接口返回的pageid，接口将持续返回符合条件的完整商品列表，该方式可以避免入口商品重复；示例2：根据pagesize和totalNum计算出总页数，按照需求返回指定页的商品（该方式可能在临近页取到重复商品）"
+      },
+      {
+        "name": "pageSize",
+        "required": "1",
+        "desc": "每页条数，默认为100，最大值200，若小于10，则按10条处理，每页条数仅支持输入10,50,100,200"
+      },
+      {
+        "name": "online",
+        "required": "0",
+        "desc": "是否下架，默认为1,1-未下架商品，0-已下架商品"
+      },
+      {
+        "name": "startTime",
+        "required": "0",
+        "desc": "商品提交开始时间，请求格式：yyyy-MM-dd HH:mm:ss"
+      },
+      {
+        "name": "endTime",
+        "required": "0",
+        "desc": "商品上架结束时间，请求格式：yyyy-MM-dd HH:mm:ss"
+      },
+      {
+        "name": "sort",
+        "required": "0",
+        "desc": "排序字段，默认为0，0-综合排序，1-商品上架时间从新到旧，2-销量从高到低，3-领券量从高到低，4-佣金比例从高到低，5-价格（券后价）从高到低，6-价格（券后价）从低到高"
+      }
+    ],
+    "version": "v1.0.1"
+  },
+  {
+    "id": "20",
+    "name": "活动商品",
+    "address": "https://openapi.dataoke.com/api/goods/activity/goods-list",
+    "test_word": [
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id，默认为1，支持传统的页码分页方式和scroll_id分页方式，根据用户自身需求传入值。示例1：商品入库，则首次传入1，后续传入接口第一次返回的pageid，接口将持续返回符合条件的完整商品列表，该方式可以避免入库商品重复；示例2：根据pagesize和totalNum计算出总页数，按照需求返回指定页的商品（该方式可能在临近页取到重复商品）"
+      },
+      {
+        "name": "pageSize",
+        "required": "0",
+        "desc": "每页条数，默认为100，大于100按100处理"
+      },
+      {
+        "name": "activityId",
+        "required": "1",
+        "desc": "通过热门活动API获取的活动id"
+      },
+      {
+        "name": "cid",
+        "required": "0",
+        "desc": "大淘客一级分类ID：1 -女装，2 -母婴，3 -美妆，4 -居家日用，5 -鞋品，6 -美食，7 -文娱车品，8 -数码家电，9 -男装，10 -内衣，11 -箱包，12 -配饰，13 -户外运动，14 -家装家纺"
+      },
+      {
+        "name": "subcid",
+        "required": "0",
+        "desc": "大淘客二级分类ID：可通过超级分类接口获取二级分类id，当同时传入一级分类id和二级分类id时，以一级分类id为准"
+      },
+      {
+        "name": "freeshipRemoteDistrict",
+        "required": "0",
+        "desc": "偏远地区包邮：1.是，0.否"
+      }
+    ],
+    "version": "v1.2.2"
+  },
+  {
+    "id": "19",
+    "name": "热门活动",
+    "address": "https://openapi.dataoke.com/api/goods/activity/catalogue",
+    "test_word": [],
+    "version": "v1.1.0"
+  },
+  {
+    "id": "40",
+    "name": "京东一元购",
+    "address": "https://openapi.dataoke.com/api/goods/jd-one-dollar-purchase",
+    "test_word": [
+      {
+        "name": "pageSize",
+        "required": "1",
+        "desc": "每页返回条数，每页条数支持输入10,20，50,100。默认50条"
+      },
+      {
+        "name": "pageId",
+        "required": "1",
+        "desc": "分页id：常规分页方式，请直接传入对应页码（比如：1,2,3……）"
+      },
+      {
+        "name": "cids",
+        "required": "0",
+        "desc": "大淘客的一级分类id，如果需要传多个，以英文逗号相隔，如：”1,2,3”。"
+      },
+      {
+        "name": "sort",
+        "required": "1",
+        "desc": "排序方式，默认为0，0-综合排序，5-价格（券后价）从高到低，6-价格（券后价）从低到高"
+      },
+      {
+        "name": "subsidy",
+        "required": "0",
+        "desc": "礼金类型（3-三元区；5-五元区）默认为三元区*（新增字段）*"
+      }
+    ],
+    "version": "v1.0.1"
+  },
+  {
+    "id": "50",
+    "name": "京东一元购订单查询",
+    "address": "https://openapi.dataoke.com/api/dels/jd/order/outer/get-order-list",
+    "test_word": [
+      {
+        "name": "orderTimeType",
+        "required": "1",
+        "desc": "订单时间类型：(1：下单时间，2：完成时间（购买用户确认收货时间），3：更新时间"
+      },
+      {
+        "name": "startTime",
+        "required": "1",
+        "desc": "开始时间 格式yyyy-MM-dd HH:mm:ss，与endTime间隔不超过30天"
+      },
+      {
+        "name": "endTime",
+        "required": "1",
+        "desc": "结束时间 格式yyyy-MM-dd HH:mm:ss，与startTime间隔不超过30天"
+      },
+      {
+        "name": "pageId",
+        "required": "0",
+        "desc": "分页id，默认为1，支持scroll翻页查询"
+      },
+      {
+        "name": "pageSize",
+        "required": "0",
+        "desc": "每页记录条数，最大支持200"
+      },
+      {
+        "name": "code",
+        "required": "0",
+        "desc": "自定义标识，用于区分下游推广渠道*（如果没有做代理返利模式，可不传）*"
+      }
+    ],
+    "version": "v1.0.0"
+  },
+  {
+    "id": "49",
+    "name": "京东一元购商品转链",
+    "address": "https://openapi.dataoke.com/api/dels/jd/kit/outer/promotion-union-convert",
+    "test_word": [
+      {
+        "name": "code",
+        "required": "1",
+        "desc": "自定义标识，用于区分下游推广渠道。*只能由数字和字符串组成且字符串长度在5-16之间*"
+      },
+      {
+        "name": "materialId",
+        "required": "1",
+        "desc": "使用【京东一元购】接口返回的*jumpURL*字段"
+      },
+      {
+        "name": "chainType",
+        "required": "0",
+        "desc": "转链类型，默认短链，短链有效期60天       1：长链2：短链3：长链+短链"
+      }
+    ],
+    "version": "v1.0.0"
+  }
+]
