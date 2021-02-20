@@ -1,0 +1,32 @@
+#
+# you MUST set PYPI_USERNAME, PYPI_PASSWORD in your project secrets
+# before use this workflow
+#
+name: Poetry Publish
+
+on:
+  release:
+    types: [ created ]
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install Poetry
+        run: |
+          python -m pip install poetry
+
+      - name: Build and publish
+        env:
+          USERNAME: ${{ secrets.PYPI_USERNAME }}
+          PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: |
+          poetry publish --build -n -u $USERNAME -p $PASSWORD
