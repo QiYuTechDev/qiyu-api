@@ -1,0 +1,1295 @@
+{
+  "success": true,
+  "data": {
+    "product": "Dysmsapi",
+    "version": "2017-05-25",
+    "api": {
+      "QuerySendDetails": {
+        "params": {
+          "RegionId": {
+            "name": "RegionId",
+            "type": "String",
+            "position": "Query",
+            "required": false,
+            "author": "api-meta-center"
+          },
+          "PhoneNumber": {
+            "name": "PhoneNumber",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "required": true,
+            "example_cn": "15900000000",
+            "description_cn": "接收短信的手机号码。\n\n格式：\n* 国内短信：11位手机号码，例如15900000000。\n* 国际/港澳台消息：国际区号+号码，例如85200000000。\n"
+          },
+          "SendDate": {
+            "name": "SendDate",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "required": true,
+            "example_cn": "20181228",
+            "description_cn": "短信发送日期，支持查询最近30天的记录。\n\n格式为yyyyMMdd，例如20181225。"
+          },
+          "PageSize": {
+            "name": "PageSize",
+            "type": "Long",
+            "position": "Query",
+            "checkBlank": false,
+            "required": true,
+            "example_cn": "10",
+            "description_cn": "分页查看发送记录，指定每页显示的短信记录数量。\n\n取值范围为1~50。"
+          },
+          "CurrentPage": {
+            "name": "CurrentPage",
+            "type": "Long",
+            "position": "Query",
+            "checkBlank": false,
+            "required": true,
+            "example_cn": "1",
+            "description_cn": "分页查看发送记录，指定发送记录的的当前页码。"
+          },
+          "OwnerId": {
+            "name": "OwnerId",
+            "type": "Long",
+            "position": "Query",
+            "checkBlank": false,
+            "required": false,
+            "example_cn": "155780923770",
+            "description_cn": "RAM用户的虚拟账号ID。"
+          },
+          "BizId": {
+            "name": "BizId",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": false,
+            "required": false,
+            "example_cn": "134523^4351232",
+            "description_cn": "发送回执ID，即发送流水号。调用发送接口SendSms或SendBatchSms发送短信时，返回值中的BizId字段。"
+          }
+        },
+        "name": "QuerySendDetails",
+        "protocol": "HTTP|HTTPS",
+        "method": "POST|GET",
+        "path": "/",
+        "summary_cn": "调用QuerySendDetails接口查看短信发送记录和发送状态。",
+        "abc_id": 102352,
+        "timeout": 10000,
+        "response_structure": [
+          {
+            "path": "RequestId",
+            "description": "请求ID。",
+            "type": "String"
+          },
+          {
+            "path": "Code",
+            "description": "请求状态码。\n- 返回OK代表请求成功。\n- 其他错误码详见[错误码列表](~~101346~~)。",
+            "type": "String"
+          },
+          {
+            "path": "Message",
+            "description": "状态码的描述。",
+            "type": "String"
+          },
+          {
+            "path": "TotalCount",
+            "description": "短信发送总条数。",
+            "type": "String"
+          },
+          {
+            "path": "SmsSendDetailDTOs",
+            "description": "短信发送明细。"
+          },
+          {
+            "path": "SmsSendDetailDTOs.SmsSendDetailDTO.*.PhoneNum",
+            "description": "接收短信的手机号码。",
+            "type": "String"
+          },
+          {
+            "path": "SmsSendDetailDTOs.SmsSendDetailDTO.*.SendStatus",
+            "description": "短信发送状态，包括：\n\n- 1：等待回执。\n- 2：发送失败。\n- 3：发送成功。",
+            "type": "Long"
+          },
+          {
+            "path": "SmsSendDetailDTOs.SmsSendDetailDTO.*.ErrCode",
+            "description": "运营商短信状态码。\n\n-  短信发送成功：DELIVRD。\n-  短信发送失败：失败错误码请参考[错误码文档](~~101347~~)。",
+            "type": "String"
+          },
+          {
+            "path": "SmsSendDetailDTOs.SmsSendDetailDTO.*.TemplateCode",
+            "description": "短信模板ID。",
+            "type": "String"
+          },
+          {
+            "path": "SmsSendDetailDTOs.SmsSendDetailDTO.*.Content",
+            "description": "短信内容。",
+            "type": "String"
+          },
+          {
+            "path": "SmsSendDetailDTOs.SmsSendDetailDTO.*.SendDate",
+            "description": "短信发送日期和时间。",
+            "type": "String"
+          },
+          {
+            "path": "SmsSendDetailDTOs.SmsSendDetailDTO.*.ReceiveDate",
+            "description": "短信接收日期和时间。",
+            "type": "String"
+          },
+          {
+            "path": "SmsSendDetailDTOs.SmsSendDetailDTO.*.OutId",
+            "description": "外部流水扩展字段。",
+            "type": "String"
+          }
+        ]
+      },
+      "SendBatchSms": {
+        "params": {
+          "RegionId": {
+            "name": "RegionId",
+            "type": "String",
+            "position": "Query",
+            "required": false,
+            "author": "api-meta-center"
+          },
+          "PhoneNumberJson": {
+            "name": "PhoneNumberJson",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "required": true,
+            "example_cn": "[\"15900000000\",\"13500000000\"]",
+            "description_cn": "接收短信的手机号码，JSON数组格式。\n\n手机号码格式：\n* 国内短信：11位手机号码，例如15900000000。\n* 国际/港澳台消息：国际区号+号码，例如85200000000。\n\n> 验证码类型短信，建议使用接口SendSms单独发送。"
+          },
+          "SignNameJson": {
+            "name": "SignNameJson",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "required": true,
+            "example_cn": "[\"阿里云\",\"阿里巴巴\"]",
+            "description_cn": "短信签名名称，JSON数组格式。\n\n请在控制台**签名管理**页面**签名名称**一列查看。\n\n<note> 必须是已添加、并通过审核的短信签名；且短信签名的个数必须与手机号码的个数相同、内容一一对应。</note>"
+          },
+          "TemplateCode": {
+            "name": "TemplateCode",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "required": true,
+            "example_cn": "SMS_152550005",
+            "description_cn": "短信模板CODE。请在控制台**模板管理**页面**模板CODE**一列查看。\n\n<note>必须是已添加、并通过审核的模板CODE；且发送国际/港澳台消息时，请使用国际/港澳台短信模版。</note>\n"
+          },
+          "OwnerId": {
+            "name": "OwnerId",
+            "type": "Long",
+            "position": "Query",
+            "checkBlank": false,
+            "required": false,
+            "example_cn": "155780923770",
+            "description_cn": "RAM用户的虚拟账号ID。"
+          },
+          "templateParamJson": {
+            "name": "templateParamJson",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": false,
+            "visibility": "Private",
+            "required": false
+          },
+          "TemplateParamJson": {
+            "name": "TemplateParamJson",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": false,
+            "required": false,
+            "example_cn": "[{\"name\":\"TemplateParamJson\"},{\"name\":\"TemplateParamJson\"}]",
+            "description_cn": "短信模板变量对应的实际值，JSON格式。\n\n<note>如果JSON中需要带换行符，请参照标准的JSON协议处理；且模板变量值的个数必须与手机号码、签名的个数相同、内容一一对应，表示向指定手机号码中发对应签名的短信，且短信模板中的变量参数替换为对应的值。</note>"
+          },
+          "SmsUpExtendCodeJson": {
+            "name": "SmsUpExtendCodeJson",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": false,
+            "required": false,
+            "example_cn": "[\"90999\",\"90998\"]",
+            "description_cn": "上行短信扩展码，JSON数组格式。无特殊需要此字段的用户请忽略此字段。"
+          }
+        },
+        "name": "SendBatchSms",
+        "protocol": "HTTP|HTTPS",
+        "method": "POST|GET",
+        "path": "/",
+        "summary_cn": "调用SendBatchSms接口批量发送短信。",
+        "abc_id": 102364,
+        "timeout": 10000,
+        "response_structure": [
+          {
+            "path": "RequestId",
+            "description": "请求ID。",
+            "type": "String"
+          },
+          {
+            "path": "BizId",
+            "description": "发送回执ID，可根据该ID在接口QuerySendDetails中查询具体的发送状态。",
+            "type": "String"
+          },
+          {
+            "path": "Code",
+            "description": "请求状态码。\n* 返回OK代表请求成功。\n* 其他错误码详见[错误码列表](~~101346~~)。",
+            "type": "String"
+          },
+          {
+            "path": "Message",
+            "description": "状态码的描述。",
+            "type": "String"
+          }
+        ]
+      },
+      "SendSms": {
+        "params": {
+          "RegionId": {
+            "name": "RegionId",
+            "type": "String",
+            "position": "Query",
+            "required": false,
+            "author": "api-meta-center"
+          },
+          "PhoneNumbers": {
+            "name": "PhoneNumbers",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "required": true,
+            "example_cn": "15900000000",
+            "description_cn": "接收短信的手机号码。\n\n格式：\n* 国内短信：11位手机号码，例如15951955195。\n* 国际/港澳台消息：国际区号+号码，例如85200000000。\n\n支持对多个手机号码发送短信，手机号码之间以英文逗号（,）分隔。上限为1000个手机号码。批量调用相对于单条调用及时性稍有延迟。\n\n<note>验证码类型短信，建议使用单独发送的方式。</note>"
+          },
+          "SignName": {
+            "name": "SignName",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "required": true,
+            "example_cn": "阿里云",
+            "description_cn": "短信签名名称。请在控制台**签名管理**页面**签名名称**一列查看。\n\n<note>必须是已添加、并通过审核的短信签名。</note>"
+          },
+          "TemplateCode": {
+            "name": "TemplateCode",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "required": true,
+            "example_cn": "SMS_153055065",
+            "description_cn": "短信模板ID。请在控制台**模板管理**页面**模板CODE**一列查看。\n\n<note>必须是已添加、并通过审核的短信签名；且发送国际/港澳台消息时，请使用国际/港澳台短信模版。</note>"
+          },
+          "OwnerId": {
+            "name": "OwnerId",
+            "type": "Long",
+            "position": "Query",
+            "checkBlank": false,
+            "required": false,
+            "example_cn": "155780923770",
+            "description_cn": "RAM用户的虚拟账号ID。"
+          },
+          "TemplateParam": {
+            "name": "TemplateParam",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": false,
+            "required": false,
+            "example_cn": "{\"code\":\"1111\"}",
+            "description_cn": "短信模板变量对应的实际值，JSON格式。\n\n<note>如果JSON中需要带换行符，请参照标准的JSON协议处理。</note>"
+          },
+          "SmsUpExtendCode": {
+            "name": "SmsUpExtendCode",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": false,
+            "required": false,
+            "example_cn": "90999",
+            "description_cn": "上行短信扩展码，无特殊需要此字段的用户请忽略此字段。"
+          },
+          "OutId": {
+            "name": "OutId",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": false,
+            "required": false,
+            "example_cn": "abcdefgh",
+            "description_cn": "外部流水扩展字段。"
+          }
+        },
+        "name": "SendSms",
+        "protocol": "HTTP|HTTPS",
+        "method": "POST|GET",
+        "path": "/",
+        "summary_cn": "调用SendSms发送短信。",
+        "abc_id": 101414,
+        "timeout": 10000,
+        "response_structure": [
+          {
+            "path": "RequestId",
+            "description": "请求ID。",
+            "type": "String"
+          },
+          {
+            "path": "BizId",
+            "description": "发送回执ID，可根据该ID在接口QuerySendDetails中查询具体的发送状态。",
+            "type": "String"
+          },
+          {
+            "path": "Code",
+            "description": "请求状态码。\n* 返回OK代表请求成功。\n* 其他错误码详见[错误码列表](~~101346~~)。",
+            "type": "String"
+          },
+          {
+            "path": "Message",
+            "description": "状态码的描述。",
+            "type": "String"
+          }
+        ]
+      },
+      "AddSmsSign": {
+        "params": {
+          "RegionId": {
+            "name": "RegionId",
+            "type": "String",
+            "position": "Query",
+            "required": false,
+            "author": "api-meta-center"
+          },
+          "SignName": {
+            "name": "SignName",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true,
+            "example_cn": "阿里云",
+            "description_cn": "签名名称。\n\n> 签名必须符合[个人用户签名规范](~~108076~~)或[企业用户签名规范](~~108254~~)。"
+          },
+          "SignSource": {
+            "name": "SignSource",
+            "type": "Integer",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true,
+            "example_cn": "1",
+            "description_cn": "签名来源。其中：\n\n- 0：企事业单位的全称或简称。\n- 1：工信部备案网站的全称或简称。\n- 2：APP应用的全称或简称。\n- 3：公众号或小程序的全称或简称。\n- 4：电商平台店铺名的全称或简称。\n- 5：商标名的全称或简称\n\n> 签名来源为1时，请在申请说明中添加网站域名，加快审核速度。"
+          },
+          "Remark": {
+            "name": "Remark",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true,
+            "example_cn": "当前的短信签名应用于双11大促推广营销",
+            "description_cn": "短信签名申请说明。请在申请说明中详细描述您的业务使用场景，申请工信部备案网站的全称或简称请在此处填写域名，长度不超过200个字符。"
+          },
+          "SignFileList": {
+            "name": "SignFileList",
+            "type": "RepeatList",
+            "position": "Query",
+            "visibility": "Public",
+            "required": true,
+            "subType": "Json",
+            "params": [
+              {
+                "name": "FileSuffix",
+                "type": "String",
+                "checkBlank": false,
+                "visibility": "Public"
+              },
+              {
+                "name": "FileContents",
+                "type": "String",
+                "checkBlank": false,
+                "visibility": "Public"
+              }
+            ]
+          },
+          "OwnerId": {
+            "name": "OwnerId",
+            "type": "Long",
+            "position": "Query",
+            "checkBlank": false,
+            "visibility": "Public",
+            "required": false,
+            "example_cn": "155780923770",
+            "description_cn": "RAM用户的虚拟账号ID。"
+          }
+        },
+        "name": "AddSmsSign",
+        "protocol": "HTTPS|HTTP",
+        "method": "POST|GET",
+        "path": "/",
+        "summary_cn": "调用短信AddSmsSign申请短信签名。",
+        "abc_id": 121207,
+        "timeout": 10000,
+        "response_structure": [
+          {
+            "path": "RequestId",
+            "description": "请求ID。",
+            "type": "String"
+          },
+          {
+            "path": "SignName",
+            "description": "签名名称。",
+            "type": "String"
+          },
+          {
+            "path": "Code",
+            "description": "请求状态码。\n* 返回OK代表请求成功。\n* 其他错误码详见[错误码列表](~~101346~~)。",
+            "type": "String"
+          },
+          {
+            "path": "Message",
+            "description": "状态码的描述。",
+            "type": "String"
+          }
+        ]
+      },
+      "DeleteSmsSign": {
+        "params": {
+          "RegionId": {
+            "name": "RegionId",
+            "type": "String",
+            "position": "Query",
+            "required": false,
+            "author": "api-meta-center"
+          },
+          "SignName": {
+            "name": "SignName",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true,
+            "example_cn": "阿里云",
+            "description_cn": "短信签名。\n\n> 必须是本账号已申请的短信签名。"
+          },
+          "OwnerId": {
+            "name": "OwnerId",
+            "type": "Long",
+            "position": "Query",
+            "checkBlank": false,
+            "visibility": "Public",
+            "required": false,
+            "example_cn": "155780923770",
+            "description_cn": "RAM用户的虚拟账号ID。"
+          }
+        },
+        "name": "DeleteSmsSign",
+        "protocol": "HTTPS|HTTP",
+        "method": "POST|GET",
+        "path": "/",
+        "summary_cn": "调用接口DeleteSmsSign删除短信签名。",
+        "abc_id": 121209,
+        "timeout": 10000,
+        "response_structure": [
+          {
+            "path": "RequestId",
+            "description": "请求ID。",
+            "type": "String"
+          },
+          {
+            "path": "SignName",
+            "description": "签名名称。",
+            "type": "String"
+          },
+          {
+            "path": "Code",
+            "description": "请求状态码。\n* 返回OK代表请求成功。\n* 其他错误码详见[错误码列表](~~101346~~)。",
+            "type": "String"
+          },
+          {
+            "path": "Message",
+            "description": "状态码的描述。",
+            "type": "String"
+          }
+        ]
+      },
+      "ModifySmsSign": {
+        "params": {
+          "RegionId": {
+            "name": "RegionId",
+            "type": "String",
+            "position": "Query",
+            "required": false,
+            "author": "api-meta-center"
+          },
+          "SignName": {
+            "name": "SignName",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true,
+            "example_cn": "阿里云",
+            "description_cn": "签名内容。\n\n> 签名内容必须符合[个人用户签名规范](~~108076~~)或[企业用户签名规范](~~108254~~)。"
+          },
+          "SignSource": {
+            "name": "SignSource",
+            "type": "Integer",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true,
+            "example_cn": "1",
+            "description_cn": "签名来源。其中：\n\n- 0：企事业单位的全称或简称。\n- 1：工信部备案网站的全称或简称。\n- 2：APP应用的全称或简称。\n- 3：公众号或小程序的全称或简称。\n- 4：电商平台店铺名的全称或简称。\n- 5：商标名的全称或简称\n\n> 签名来源为1时，请在申请说明中添加网站域名，加快审核速度。"
+          },
+          "Remark": {
+            "name": "Remark",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true,
+            "example_cn": "当前的短信签名应用于双11大促推广营销",
+            "description_cn": "短信签名申请说明。请在申请说明中详细描述您的业务使用场景，申请工信部备案网站的全称或简称请在此处填写域名，长度不超过200个字符。"
+          },
+          "SignFileList": {
+            "name": "SignFileList",
+            "type": "RepeatList",
+            "position": "Query",
+            "visibility": "Public",
+            "required": true,
+            "subType": "Json",
+            "params": [
+              {
+                "name": "FileSuffix",
+                "type": "String",
+                "checkBlank": false,
+                "visibility": "Public"
+              },
+              {
+                "name": "FileContents",
+                "type": "String",
+                "checkBlank": false,
+                "visibility": "Public"
+              }
+            ]
+          },
+          "OwnerId": {
+            "name": "OwnerId",
+            "type": "Long",
+            "position": "Query",
+            "checkBlank": false,
+            "visibility": "Public",
+            "required": false,
+            "example_cn": "155780923770",
+            "description_cn": "RAM用户的虚拟账号ID。"
+          }
+        },
+        "name": "ModifySmsSign",
+        "protocol": "HTTPS|HTTP",
+        "method": "POST|GET",
+        "path": "/",
+        "summary_cn": "调用接口ModifySmsSign修改未审核通过的短信签名证明文件，并重新提交审核。",
+        "abc_id": 121212,
+        "timeout": 10000,
+        "response_structure": [
+          {
+            "path": "RequestId",
+            "description": "请求ID。",
+            "type": "String"
+          },
+          {
+            "path": "SignName",
+            "description": "签名名称。",
+            "type": "String"
+          },
+          {
+            "path": "Code",
+            "description": "请求状态码。\n* 返回OK代表请求成功。\n* 其他错误码详见[错误码列表](~~101346~~)。",
+            "type": "String"
+          },
+          {
+            "path": "Message",
+            "description": "状态码的描述。",
+            "type": "String"
+          }
+        ]
+      },
+      "AddSmsTemplate": {
+        "params": {
+          "RegionId": {
+            "name": "RegionId",
+            "type": "String",
+            "position": "Query",
+            "required": false,
+            "author": "api-meta-center"
+          },
+          "TemplateType": {
+            "name": "TemplateType",
+            "type": "Integer",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true,
+            "example_cn": "1",
+            "description_cn": "短信类型。其中：\n- 0：验证码。\n- 1：短信通知。\n- 2：推广短信。\n- 3：国际/港澳台消息。"
+          },
+          "TemplateName": {
+            "name": "TemplateName",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true,
+            "example_cn": "阿里云短信测试模板",
+            "description_cn": "模板名称，长度为1~30个字符。"
+          },
+          "TemplateContent": {
+            "name": "TemplateContent",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true,
+            "example_cn": "您正在申请手机注册，验证码为：${code}，5分钟内有效！",
+            "description_cn": "模板内容，长度为1~500个字符。\n\n模板内容需要符合[文本短信模板规范](~~108253~~)或[国际/港澳台短信模板规范](~~108254~~)。"
+          },
+          "Remark": {
+            "name": "Remark",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true,
+            "example_cn": "当前的短信模板应用于双11大促推广营销",
+            "description_cn": "短信模板申请说明。请在申请说明中描述您的业务使用场景，长度为1~100个字符。"
+          },
+          "OwnerId": {
+            "name": "OwnerId",
+            "type": "Long",
+            "position": "Query",
+            "checkBlank": false,
+            "visibility": "Public",
+            "required": false,
+            "example_cn": "155780923770",
+            "description_cn": "RAM用户的虚拟账号ID。"
+          }
+        },
+        "name": "AddSmsTemplate",
+        "protocol": "HTTPS|HTTP",
+        "method": "POST|GET",
+        "path": "/",
+        "summary_cn": "调用接口AddSmsTemplate申请短信模板。",
+        "abc_id": 121208,
+        "timeout": 10000,
+        "response_structure": [
+          {
+            "path": "RequestId",
+            "description": "请求ID。",
+            "type": "String"
+          },
+          {
+            "path": "TemplateCode",
+            "description": "短信模板CODE。您可以使用模板CODE通过API接口**QuerySmsTemplate**或在控制台查看模板申请状态和结果。",
+            "type": "String"
+          },
+          {
+            "path": "Code",
+            "description": "请求状态码。\n* 返回OK代表请求成功。\n* 其他错误码详见[错误码列表](~~101346~~)。",
+            "type": "String"
+          },
+          {
+            "path": "Message",
+            "description": "状态码的描述。",
+            "type": "String"
+          }
+        ]
+      },
+      "ModifySmsTemplate": {
+        "params": {
+          "RegionId": {
+            "name": "RegionId",
+            "type": "String",
+            "position": "Query",
+            "required": false,
+            "author": "api-meta-center"
+          },
+          "TemplateType": {
+            "name": "TemplateType",
+            "type": "Integer",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true
+          },
+          "TemplateName": {
+            "name": "TemplateName",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true
+          },
+          "TemplateCode": {
+            "name": "TemplateCode",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true
+          },
+          "TemplateContent": {
+            "name": "TemplateContent",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true
+          },
+          "Remark": {
+            "name": "Remark",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true
+          },
+          "OwnerId": {
+            "name": "OwnerId",
+            "type": "Long",
+            "position": "Query",
+            "checkBlank": false,
+            "visibility": "Public",
+            "required": false
+          }
+        },
+        "name": "ModifySmsTemplate",
+        "protocol": "HTTPS|HTTP",
+        "method": "POST|GET",
+        "path": "/",
+        "timeout": 10000,
+        "response_structure": [
+          {
+            "path": "RequestId",
+            "type": "String"
+          },
+          {
+            "path": "TemplateCode",
+            "type": "String"
+          },
+          {
+            "path": "Code",
+            "type": "String"
+          },
+          {
+            "path": "Message",
+            "type": "String"
+          }
+        ]
+      },
+      "QuerySmsTemplate": {
+        "params": {
+          "RegionId": {
+            "name": "RegionId",
+            "type": "String",
+            "position": "Query",
+            "required": false,
+            "author": "api-meta-center"
+          },
+          "TemplateCode": {
+            "name": "TemplateCode",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true
+          },
+          "OwnerId": {
+            "name": "OwnerId",
+            "type": "Long",
+            "position": "Query",
+            "checkBlank": false,
+            "visibility": "Public",
+            "required": false
+          }
+        },
+        "name": "QuerySmsTemplate",
+        "protocol": "HTTPS|HTTP",
+        "method": "POST|GET",
+        "path": "/",
+        "timeout": 10000,
+        "response_structure": [
+          {
+            "path": "RequestId",
+            "type": "String"
+          },
+          {
+            "path": "Code",
+            "type": "String"
+          },
+          {
+            "path": "Message",
+            "type": "String"
+          },
+          {
+            "path": "TemplateStatus",
+            "type": "Integer"
+          },
+          {
+            "path": "Reason",
+            "type": "String"
+          },
+          {
+            "path": "TemplateCode",
+            "type": "String"
+          },
+          {
+            "path": "TemplateType",
+            "type": "Integer"
+          },
+          {
+            "path": "TemplateName",
+            "type": "String"
+          },
+          {
+            "path": "TemplateContent",
+            "type": "String"
+          },
+          {
+            "path": "CreateDate",
+            "type": "String"
+          }
+        ]
+      },
+      "DeleteSmsTemplate": {
+        "params": {
+          "RegionId": {
+            "name": "RegionId",
+            "type": "String",
+            "position": "Query",
+            "required": false,
+            "author": "api-meta-center"
+          },
+          "TemplateCode": {
+            "name": "TemplateCode",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true
+          },
+          "OwnerId": {
+            "name": "OwnerId",
+            "type": "Long",
+            "position": "Query",
+            "checkBlank": false,
+            "visibility": "Public",
+            "required": false
+          }
+        },
+        "name": "DeleteSmsTemplate",
+        "protocol": "HTTPS|HTTP",
+        "method": "POST|GET",
+        "path": "/",
+        "timeout": 10000,
+        "response_structure": [
+          {
+            "path": "RequestId",
+            "type": "String"
+          },
+          {
+            "path": "TemplateCode",
+            "type": "String"
+          },
+          {
+            "path": "Code",
+            "type": "String"
+          },
+          {
+            "path": "Message",
+            "type": "String"
+          }
+        ]
+      },
+      "QuerySmsSign": {
+        "params": {
+          "RegionId": {
+            "name": "RegionId",
+            "type": "String",
+            "position": "Query",
+            "required": false,
+            "author": "api-meta-center"
+          },
+          "SignName": {
+            "name": "SignName",
+            "type": "String",
+            "position": "Query",
+            "checkBlank": true,
+            "visibility": "Public",
+            "required": true,
+            "docRequired": true
+          },
+          "OwnerId": {
+            "name": "OwnerId",
+            "type": "Long",
+            "position": "Query",
+            "checkBlank": false,
+            "visibility": "Public",
+            "required": false
+          }
+        },
+        "name": "QuerySmsSign",
+        "protocol": "HTTPS|HTTP",
+        "method": "POST|GET",
+        "path": "/",
+        "timeout": 10000,
+        "response_structure": [
+          {
+            "path": "RequestId",
+            "type": "String"
+          },
+          {
+            "path": "Code",
+            "type": "String"
+          },
+          {
+            "path": "Message",
+            "type": "String"
+          },
+          {
+            "path": "SignStatus",
+            "type": "Integer"
+          },
+          {
+            "path": "Reason",
+            "type": "String"
+          },
+          {
+            "path": "SignName",
+            "type": "String"
+          },
+          {
+            "path": "CreateDate",
+            "type": "String"
+          }
+        ]
+      },
+      "AddShortUrl": {
+        "params": {
+          "RegionId": {
+            "name": "RegionId",
+            "type": "String",
+            "position": "Query",
+            "required": false,
+            "author": "api-meta-center"
+          },
+          "OwnerId": {
+            "name": "OwnerId",
+            "type": "Long",
+            "position": "Query",
+            "checkBlank": false,
+            "visibility": "Public",
+            "required": false
+          },
+          "SourceUrl": {
+            "name": "SourceUrl",
+            "type": "String",
+            "position": "Body",
+            "checkBlank": false,
+            "visibility": "Public",
+            "required": false
+          },
+          "ShortUrlName": {
+            "name": "ShortUrlName",
+            "type": "String",
+            "position": "Body",
+            "checkBlank": false,
+            "visibility": "Public",
+            "required": false
+          },
+          "EffectiveDays": {
+            "name": "EffectiveDays",
+            "type": "String",
+            "position": "Body",
+            "checkBlank": false,
+            "visibility": "Public",
+            "required": false
+          },
+          "ProdCode": {
+            "name": "ProdCode",
+            "type": "String",
+            "position": "Body",
+            "checkBlank": false,
+            "visibility": "Private",
+            "required": false
+          }
+        },
+        "name": "AddShortUrl",
+        "protocol": "HTTPS|HTTP",
+        "method": "POST|GET",
+        "path": "/",
+        "timeout": 10000,
+        "response_structure": [
+          {
+            "path": "RequestId",
+            "type": "String"
+          },
+          {
+            "path": "Code",
+            "type": "String"
+          },
+          {
+            "path": "Message",
+            "type": "String"
+          },
+          {
+            "path": "Data"
+          },
+          {
+            "path": "Data.SourceUrl",
+            "type": "String"
+          },
+          {
+            "path": "Data.ExpireDate",
+            "type": "String"
+          },
+          {
+            "path": "Data.ShortUrl",
+            "type": "String"
+          }
+        ]
+      },
+      "CreateShortParam": {
+        "params": {
+          "RegionId": {
+            "name": "RegionId",
+            "type": "String",
+            "position": "Query",
+            "required": false,
+            "author": "api-meta-center"
+          },
+          "OwnerId": {
+            "name": "OwnerId",
+            "type": "Long",
+            "position": "Query",
+            "checkBlank": false,
+            "visibility": "Public",
+            "required": false
+          },
+          "PhoneNumbers": {
+            "name": "PhoneNumbers",
+            "type": "String",
+            "position": "Body",
+            "checkBlank": false,
+            "visibility": "Public",
+            "required": false
+          },
+          "ProdCode": {
+            "name": "ProdCode",
+            "type": "String",
+            "position": "Body",
+            "checkBlank": false,
+            "visibility": "Private",
+            "required": false
+          }
+        },
+        "name": "CreateShortParam",
+        "protocol": "HTTPS|HTTP",
+        "method": "POST|GET",
+        "path": "/",
+        "timeout": 10000,
+        "response_structure": [
+          {
+            "path": "RequestId",
+            "type": "String"
+          },
+          {
+            "path": "Code",
+            "type": "String"
+          },
+          {
+            "path": "Message",
+            "type": "String"
+          },
+          {
+            "path": "Data"
+          },
+          {
+            "path": "Data.ParamDetail",
+            "type": "String"
+          },
+          {
+            "path": "Data.PhoneNumbers",
+            "type": "String"
+          },
+          {
+            "path": "Data.ShortParam",
+            "type": "String"
+          }
+        ]
+      },
+      "DeleteShortUrl": {
+        "params": {
+          "RegionId": {
+            "name": "RegionId",
+            "type": "String",
+            "position": "Query",
+            "required": false,
+            "author": "api-meta-center"
+          },
+          "OwnerId": {
+            "name": "OwnerId",
+            "type": "Long",
+            "position": "Query",
+            "checkBlank": false,
+            "visibility": "Public",
+            "required": false
+          },
+          "SourceUrl": {
+            "name": "SourceUrl",
+            "type": "String",
+            "position": "Body",
+            "checkBlank": false,
+            "visibility": "Public",
+            "required": false
+          },
+          "ProdCode": {
+            "name": "ProdCode",
+            "type": "String",
+            "position": "Body",
+            "checkBlank": false,
+            "visibility": "Private",
+            "required": false
+          }
+        },
+        "name": "DeleteShortUrl",
+        "protocol": "HTTPS|HTTP",
+        "method": "POST|GET|DELETE",
+        "path": "/",
+        "timeout": 10000,
+        "response_structure": [
+          {
+            "path": "RequestId",
+            "type": "String"
+          },
+          {
+            "path": "Code",
+            "type": "String"
+          },
+          {
+            "path": "Message",
+            "type": "String"
+          },
+          {
+            "path": "Data",
+            "type": "String"
+          }
+        ]
+      },
+      "QueryShortUrl": {
+        "params": {
+          "RegionId": {
+            "name": "RegionId",
+            "type": "String",
+            "position": "Query",
+            "required": false,
+            "author": "api-meta-center"
+          },
+          "OwnerId": {
+            "name": "OwnerId",
+            "type": "Long",
+            "position": "Query",
+            "checkBlank": false,
+            "visibility": "Public",
+            "required": false
+          },
+          "ProdCode": {
+            "name": "ProdCode",
+            "type": "String",
+            "position": "Body",
+            "checkBlank": false,
+            "visibility": "Private",
+            "required": false
+          },
+          "ShortUrl": {
+            "name": "ShortUrl",
+            "type": "String",
+            "position": "Body",
+            "checkBlank": false,
+            "visibility": "Public",
+            "required": false
+          }
+        },
+        "name": "QueryShortUrl",
+        "protocol": "HTTPS|HTTP",
+        "method": "POST|GET",
+        "path": "/",
+        "timeout": 10000,
+        "response_structure": [
+          {
+            "path": "RequestId",
+            "type": "String"
+          },
+          {
+            "path": "Code",
+            "type": "String"
+          },
+          {
+            "path": "Message",
+            "type": "String"
+          },
+          {
+            "path": "Data"
+          },
+          {
+            "path": "Data.SourceUrl",
+            "type": "String"
+          },
+          {
+            "path": "Data.ShortUrlName",
+            "type": "String"
+          },
+          {
+            "path": "Data.ShortUrlStatus",
+            "type": "String"
+          },
+          {
+            "path": "Data.ShortUrl",
+            "type": "String"
+          },
+          {
+            "path": "Data.CreateDate",
+            "type": "String"
+          },
+          {
+            "path": "Data.ExpireDate",
+            "type": "String"
+          },
+          {
+            "path": "Data.PageViewCount",
+            "type": "String"
+          },
+          {
+            "path": "Data.UniqueVisitorCount",
+            "type": "String"
+          }
+        ]
+      }
+    }
+  },
+  "requestId": "0b9255d5-8e44-4edd-8e9c-d53de184eafa"
+}
