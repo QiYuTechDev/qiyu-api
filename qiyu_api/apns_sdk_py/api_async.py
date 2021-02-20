@@ -2,7 +2,7 @@ from aiohttp.client import ClientResponse
 
 from .dt import *
 
-__all__ = ['APNsAsync']
+__all__ = ["APNsAsync"]
 
 
 class APNsAsync(object):
@@ -25,7 +25,7 @@ class APNsAsync(object):
             return False
 
     def _get_url_by_path(self, path: str) -> str:
-        return f'{self._base_url}{path}'
+        return f"{self._base_url}{path}"
 
     async def _do_request(self, method: str, url: str, data: dict) -> ClientResponse:
         return await self._session.request(method=method, url=url, json=data)

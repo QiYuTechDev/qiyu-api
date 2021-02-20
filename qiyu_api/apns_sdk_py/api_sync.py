@@ -2,11 +2,10 @@ from requests import Session, Response
 
 from .dt import *
 
-__all__ = ['APNsSync']
+__all__ = ["APNsSync"]
 
 
 class APNsSync(object):
-
     def __init__(self, base_url: str):
         self._base_url = base_url
         self._session = Session()
@@ -26,7 +25,7 @@ class APNsSync(object):
             return False
 
     def _get_url_by_path(self, path: str) -> str:
-        return f'{self._base_url}{path}'
+        return f"{self._base_url}{path}"
 
     def _do_request(self, method: str, url: str, data: dict) -> Response:
         return self._session.request(method=method, url=url, json=data)
