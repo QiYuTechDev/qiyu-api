@@ -6,6 +6,13 @@
 [![Pylama Lint](https://github.com/QiYuTechDev/qiyu-api/actions/workflows/pylama-lint.yml/badge.svg)](https://github.com/QiYuTechDev/qiyu-api/actions/workflows/pylama-lint.yml)
 [![pytest](https://github.com/QiYuTechDev/qiyu-api/actions/workflows/pytest.yml/badge.svg)](https://github.com/QiYuTechDev/qiyu-api/actions/workflows/pytest.yml)
 
+![PyPI - Version](https://img.shields.io/pypi/v/qiyu-api)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/qiyu-api)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/py_apple_signin)
+![PyPI - Wheel](https://img.shields.io/pypi/wheel/qiyu-api)
+![GitHub repo size](https://img.shields.io/github/repo-size/qiyutechdev/py_apple_signin)
+![Lines of code](https://img.shields.io/tokei/lines/github/qiyutechdev/py_apple_signin)
+
 奇遇科技 Python API 集合
 
 ## 当前已经合并
