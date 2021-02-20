@@ -1,6 +1,6 @@
 from aiohttp.client import ClientResponse
 
-from .dt import *
+from .dt import PushForm
 
 __all__ = ["APNsAsync"]
 
