@@ -1,6 +1,6 @@
 from requests import Session, Response
 
-from .dt import *
+from .dt import PushForm
 
 __all__ = ["APNsSync"]
 
