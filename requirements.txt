@@ -18,7 +18,6 @@ pyjwt==2.0.1; python_version >= "3.6"
 requests==2.25.1; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0")
 stringcase==1.2.0; python_version >= "3.6"
 structlog==21.1.0; python_version >= "3.6"
-tbk-api==0.2.1; python_version >= "3.9" and python_version < "4.0"
 typing-extensions==3.7.4.3; python_version >= "3.6"
 typing-inspect==0.6.0; python_version >= "3.6"
 urllib3==1.26.3; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version < "4"

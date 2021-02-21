@@ -17,9 +17,6 @@ structlog = ">=21,<22"
 aiohttp = ">=3.7,<4"
 requests = ">=2.25,<3"
 
-# prepare for std tbk API
-tbk_api = ">=0.2.1,<0.3"
-
 # for mob api
 pydes = ">=2,<3"
 
