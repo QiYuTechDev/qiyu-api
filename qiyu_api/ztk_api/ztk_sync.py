@@ -20,8 +20,6 @@ from .item_detail_v2_args import ItemDetailV2Args
 from .item_detail_v2_resp import ItemDetailV2Resp
 from .keyword_args import KeywordArgs
 from .new_order_args import NewOrderArgs
-from .nine_nine_args import NineNineArgs
-from .nine_nine_resp import NineNineResp
 from .search_args import SearchArgs
 from .search_resp import SearchResp
 from .suggest_args import SuggestArgs
@@ -144,14 +142,6 @@ class ZTKSync(object):
         url = args.to_http_url_sync()
         j = self._do_query(url)
         return j
-
-    def nine_nine(self, args: NineNineArgs):
-        """
-        9.9元商品API：返回购买价格≤9.9元的商品列表，返回佣金≥15%，动态描述分≥4.6的商品列表。
-        """
-        url = args.to_http_url_sync()
-        j = self._do_query(url)
-        return NineNineResp.from_dict(j)
 
     def search(self, args: SearchArgs) -> SearchResp:
         """

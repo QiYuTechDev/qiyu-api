@@ -25,7 +25,6 @@ from .item_detail_v2_resp import ItemDetailV2Resp, ItemDetailV2ContentItem  # no
 from .ju_hua_suan_args import JuHuaSuanArgs  # noqa
 from .new_order_args import NewOrderArgs  # noqa
 from .nine_nine_args import NineNineArgs  # noqa
-from .nine_nine_model import NineNineModel  # noqa
 from .order_details_resp import OrderDetailsResp, OrderDto, TkStatusEnum  # noqa
 from .search_args import SearchArgs  # noqa
 from .search_model import SearchModel  # noqa
