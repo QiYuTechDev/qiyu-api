@@ -7,7 +7,6 @@ from typing import Optional, List
 
 import aiohttp
 import structlog
-from tbk_api import TbkItemInfo
 
 from .bang_dan_tui_jian_args import BangDanTuiJianArgs
 from .batch_item_args import BatchItemsArgs
@@ -20,6 +19,7 @@ from .search_args import SearchArgs
 from .suggest_args import SuggestArgs
 from .tmall_chao_shi_args import TMallChaoShiArgs
 from .tmall_shang_pin_args import TMallShangPinArgs
+from ..tbk_api import TbkItemInfo
 
 __all__ = ["ZTKStd"]
 

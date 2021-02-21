@@ -3,10 +3,9 @@ import logging
 from datetime import datetime
 from typing import Set, Tuple
 
-from tbk_api import TbkItemInfo, TbkBrandInfo
-
 from .api_async import DtkAsyncApi
 from .gen import *
+from ..tbk_api import TbkItemInfo, TbkBrandInfo
 
 __all__ = ["DtkStdApi"]
 
