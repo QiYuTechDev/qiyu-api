@@ -5,8 +5,6 @@ import aiohttp
 import structlog
 
 from .auth_account_args import AuthAccountArgs
-from .bang_dan_tui_jian_args import BangDanTuiJianArgs
-from .bang_dan_tui_jian_resp import BangDanTuiJianResp
 from .batch_item_args import BatchItemsArgs
 from .batch_item_resp import BatchItemResp
 from .channel_account_info_args import ChannelAccountInfoArgs
@@ -61,14 +59,6 @@ class ZTK(object):
         url = await args.to_http_url()
         j = await self._do_query(url)
         return j
-
-    async def bang_dan_tui_jian(self, args: BangDanTuiJianArgs) -> BangDanTuiJianResp:
-        """
-        全天销量榜API：返回24小时内销量榜单商品列表（前600个），返回佣金≥15%，动态描述分≥4.6的商品列表。
-        """
-        url = await args.to_http_url()
-        j = await self._do_query(url)
-        return BangDanTuiJianResp.from_dict(j)
 
     async def batch_items(self, args: BatchItemsArgs) -> BatchItemResp:
         """

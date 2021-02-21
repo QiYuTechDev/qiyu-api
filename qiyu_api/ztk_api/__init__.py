@@ -6,7 +6,6 @@ API接口: https://www.zhetaoke.com/user/extend/extend_lingquan_default.aspx
 """
 from .auth_account_args import AuthAccountArgs  # noqa
 from .bang_dan_tui_jian_args import BangDanTuiJianArgs  # noqa
-from .bang_dan_tui_jian_model import BangDanTuiJianModel  # noqa
 from .batch_item_args import BatchItemsArgs  # noqa
 from .batch_item_model import BatchItemModel  # noqa
 from .batch_item_resp import BatchItemResp  # noqa

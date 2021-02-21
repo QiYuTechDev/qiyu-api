@@ -9,8 +9,6 @@ import requests
 import structlog
 
 from .auth_account_args import AuthAccountArgs
-from .bang_dan_tui_jian_args import BangDanTuiJianArgs
-from .bang_dan_tui_jian_resp import BangDanTuiJianResp
 from .channel_account_info_args import ChannelAccountInfoArgs
 from .channel_id_list_args import ChannelIdListArgs
 from .channel_invite_code_args import ChannelInviteCodeArgs
@@ -63,14 +61,6 @@ class ZTKSync(object):
         url = args.to_http_url_sync()
         j = self._do_query(url)
         return j
-
-    def bang_dan_tui_jian(self, args: BangDanTuiJianArgs) -> BangDanTuiJianResp:
-        """
-        全天销量榜API：返回24小时内销量榜单商品列表（前600个），返回佣金≥15%，动态描述分≥4.6的商品列表。
-        """
-        url = args.to_http_url_sync()
-        j = self._do_query(url)
-        return BangDanTuiJianResp.from_dict(j)
 
     def channel_account_info(self, args: ChannelAccountInfoArgs):
         args.sid = self._ztk_sid()
