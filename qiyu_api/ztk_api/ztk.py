@@ -1,6 +1,3 @@
-"""
-折淘客 开放品台 API
-"""
 import json
 from typing import Optional, List
 

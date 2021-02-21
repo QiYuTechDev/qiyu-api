@@ -1,4 +1,4 @@
-# QiYu-api
+# QiYu-API
 
 [![Black Format Check](https://github.com/QiYuTechDev/qiyu-api/actions/workflows/black-format.yml/badge.svg)](https://github.com/QiYuTechDev/qiyu-api/actions/workflows/black-format.yml)
 [![CodeQL](https://github.com/QiYuTechDev/qiyu-api/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/QiYuTechDev/qiyu-api/actions/workflows/codeql-analysis.yml)

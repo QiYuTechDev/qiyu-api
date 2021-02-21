@@ -1,3 +1,9 @@
+"""
+折淘客 开放平台 API
+
+官网: https://www.zhetaoke.com/
+API接口: https://www.zhetaoke.com/user/extend/extend_lingquan_default.aspx
+"""
 from .auth_account_args import AuthAccountArgs  # noqa
 from .bang_dan_tui_jian_args import BangDanTuiJianArgs  # noqa
 from .bang_dan_tui_jian_model import BangDanTuiJianModel  # noqa
