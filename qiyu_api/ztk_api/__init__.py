@@ -23,7 +23,6 @@ from .item_detail_v2_args import ItemDetailV2Args  # noqa
 from .item_detail_v2_model import ItemDetailV2Model  # noqa
 from .item_detail_v2_resp import ItemDetailV2Resp, ItemDetailV2ContentItem  # noqa
 from .ju_hua_suan_args import JuHuaSuanArgs  # noqa
-from .ju_hua_suan_model import JuHuaSuanModel  # noqa
 from .new_order_args import NewOrderArgs  # noqa
 from .nine_nine_args import NineNineArgs  # noqa
 from .nine_nine_model import NineNineModel  # noqa

@@ -18,8 +18,6 @@ from .item_detail_args import ItemDetailArgs
 from .item_detail_resp import ItemDetailResp
 from .item_detail_v2_args import ItemDetailV2Args
 from .item_detail_v2_resp import ItemDetailV2Resp
-from .ju_hua_suan_args import JuHuaSuanArgs
-from .ju_hua_suan_resp import JuHuaSuanResp
 from .keyword_args import KeywordArgs
 from .new_order_args import NewOrderArgs
 from .nine_nine_args import NineNineArgs
@@ -122,14 +120,6 @@ class ZTKSync(object):
         url = args.to_http_url_sync()
         j = self._do_query(url)
         return ItemDetailV2Resp.from_dict(j)
-
-    def ju_hua_suan(self, args: JuHuaSuanArgs) -> JuHuaSuanResp:
-        """
-        聚划算商品API：返回聚划算商品列表，返回佣金≥15%，动态描述分≥4.6的商品列表。
-        """
-        url = args.to_http_url_sync()
-        j = self._do_query(url)
-        return JuHuaSuanResp.from_dict(j)
 
     def keyword(self) -> list:
         """
