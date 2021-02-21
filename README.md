@@ -17,9 +17,10 @@
 
 ## 当前已经合并
 
-* ztk_api
-* mob_api
-* apns_sdk_py
-* qiyu-api
 * ali_sms_api
+* apns_sdk_py
 * dtk_api
+* mob_api
+* py_apple_signin
+* tbk_api
+* ztk_api
