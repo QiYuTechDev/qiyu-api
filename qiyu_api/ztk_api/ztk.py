@@ -23,10 +23,6 @@ from .search_resp import SearchResp
 from .suggest_args import SuggestArgs
 from .tkl_create_args import TKLCreateArgs
 from .tkl_create_resp import TKLCreateResp
-from .tmall_chao_shi_args import TMallChaoShiArgs
-from .tmall_chao_shi_resp import TmallChaoShiResp
-from .tmall_shang_pin_args import TMallShangPinArgs
-from .tmall_shang_pin_resp import TmallShangPinResp
 
 __all__ = ["ZTK"]
 
@@ -158,22 +154,6 @@ class ZTK(object):
         result = j["result"]
 
         return list(map(lambda item: item[0], result))
-
-    async def tmall_chao_shi(self, args: TMallChaoShiArgs) -> TmallChaoShiResp:
-        """
-        天猫超市商品API：返回天猫超市商品列表，动态描述分≥4.6的商品列表，根据不同参数可返回天猫超市单件免邮商品。
-        """
-        url = await args.to_http_url()
-        j = await self._do_query(url)
-        return TmallChaoShiResp.from_dict(j)
-
-    async def tmall_shang_pin(self, args: TMallShangPinArgs) -> TmallShangPinResp:
-        """
-        天猫商品API：返回天猫商品列表，返回佣金≥15%，动态描述分≥4.6的商品列表。
-        """
-        url = await args.to_http_url()
-        j = await self._do_query(url)
-        return TmallShangPinResp.from_dict(j)
 
     async def tkl_create(self, args: TKLCreateArgs) -> TKLCreateResp:
         """

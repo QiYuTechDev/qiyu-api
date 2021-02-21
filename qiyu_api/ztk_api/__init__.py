@@ -32,9 +32,7 @@ from .suggest_args import SuggestArgs  # noqa
 from .tkl_create_args import TKLCreateArgs  # noqa
 from .tkl_create_resp import TKLCreateResp  # noqa
 from .tmall_chao_shi_args import TMallChaoShiArgs  # noqa
-from .tmall_chao_shi_model import TmallChaoShiModel  # noqa
 from .tmall_shang_pin_args import TMallShangPinArgs  # noqa
-from .tmall_shang_pin_model import TmallShangPinModel  # noqa
 from .ztk import ZTK  # noqa
 from .ztk_std import ZTKStd  # noqa
 from .ztk_sync import ZTKSync  # noqa
