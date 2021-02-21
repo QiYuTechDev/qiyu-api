@@ -9,12 +9,12 @@ from .base import AliSmsBase
 
 
 class QuerySendDetailsQueryParams(BaseModel):
-    RegionId: Optional[str] = Field(None, title=f"""""")
+    RegionId: Optional[str] = Field(None, title="""""")
 
     # 例子: 15900000000
     PhoneNumber: str = Field(
         ...,
-        title=f"""接收短信的手机号码。
+        title="""接收短信的手机号码。
 
 格式：
 * 国内短信：11位手机号码，例如15900000000。
@@ -25,7 +25,7 @@ class QuerySendDetailsQueryParams(BaseModel):
     # 例子: 20181228
     SendDate: str = Field(
         ...,
-        title=f"""短信发送日期，支持查询最近30天的记录。
+        title="""短信发送日期，支持查询最近30天的记录。
 
 格式为yyyyMMdd，例如20181225。""",
     )
@@ -33,32 +33,32 @@ class QuerySendDetailsQueryParams(BaseModel):
     # 例子: 10
     PageSize: int = Field(
         ...,
-        title=f"""分页查看发送记录，指定每页显示的短信记录数量。
+        title="""分页查看发送记录，指定每页显示的短信记录数量。
 
 取值范围为1~50。""",
     )
 
     # 例子: 1
-    CurrentPage: int = Field(..., title=f"""分页查看发送记录，指定发送记录的的当前页码。""")
+    CurrentPage: int = Field(..., title="""分页查看发送记录，指定发送记录的的当前页码。""")
 
     # 例子: 155780923770
-    OwnerId: Optional[int] = Field(None, title=f"""RAM用户的虚拟账号ID。""")
+    OwnerId: Optional[int] = Field(None, title="""RAM用户的虚拟账号ID。""")
 
     # 例子: 134523^4351232
     BizId: Optional[str] = Field(
-        None, title=f"""发送回执ID，即发送流水号。调用发送接口SendSms或SendBatchSms发送短信时，返回值中的BizId字段。"""
+        None, title="""发送回执ID，即发送流水号。调用发送接口SendSms或SendBatchSms发送短信时，返回值中的BizId字段。"""
     )
 
     Action: str = Field("QuerySendDetails", title="系统的Action")
 
 
 class SendBatchSmsQueryParams(BaseModel):
-    RegionId: Optional[str] = Field(None, title=f"""""")
+    RegionId: Optional[str] = Field(None, title="""""")
 
     # 例子: ["15900000000","13500000000"]
     PhoneNumberJson: str = Field(
         ...,
-        title=f"""接收短信的手机号码，JSON数组格式。
+        title="""接收短信的手机号码，JSON数组格式。
 
 手机号码格式：
 * 国内短信：11位手机号码，例如15900000000。
@@ -70,7 +70,7 @@ class SendBatchSmsQueryParams(BaseModel):
     # 例子: ["阿里云","阿里巴巴"]
     SignNameJson: str = Field(
         ...,
-        title=f"""短信签名名称，JSON数组格式。
+        title="""短信签名名称，JSON数组格式。
 
 请在控制台**签名管理**页面**签名名称**一列查看。
 
@@ -80,40 +80,40 @@ class SendBatchSmsQueryParams(BaseModel):
     # 例子: SMS_152550005
     TemplateCode: str = Field(
         ...,
-        title=f"""短信模板CODE。请在控制台**模板管理**页面**模板CODE**一列查看。
+        title="""短信模板CODE。请在控制台**模板管理**页面**模板CODE**一列查看。
 
 <note>必须是已添加、并通过审核的模板CODE；且发送国际/港澳台消息时，请使用国际/港澳台短信模版。</note>
 """,
     )
 
     # 例子: 155780923770
-    OwnerId: Optional[int] = Field(None, title=f"""RAM用户的虚拟账号ID。""")
+    OwnerId: Optional[int] = Field(None, title="""RAM用户的虚拟账号ID。""")
 
-    templateParamJson: Optional[str] = Field(None, title=f"""""")
+    templateParamJson: Optional[str] = Field(None, title="""""")
 
     # 例子: [{"name":"TemplateParamJson"},{"name":"TemplateParamJson"}]
     TemplateParamJson: Optional[str] = Field(
         None,
-        title=f"""短信模板变量对应的实际值，JSON格式。
+        title="""短信模板变量对应的实际值，JSON格式。
 
 <note>如果JSON中需要带换行符，请参照标准的JSON协议处理；且模板变量值的个数必须与手机号码、签名的个数相同、内容一一对应，表示向指定手机号码中发对应签名的短信，且短信模板中的变量参数替换为对应的值。</note>""",
     )
 
     # 例子: ["90999","90998"]
     SmsUpExtendCodeJson: Optional[str] = Field(
-        None, title=f"""上行短信扩展码，JSON数组格式。无特殊需要此字段的用户请忽略此字段。"""
+        None, title="""上行短信扩展码，JSON数组格式。无特殊需要此字段的用户请忽略此字段。"""
     )
 
     Action: str = Field("SendBatchSms", title="系统的Action")
 
 
 class SendSmsQueryParams(BaseModel):
-    RegionId: Optional[str] = Field(None, title=f"""""")
+    RegionId: Optional[str] = Field(None, title="""""")
 
     # 例子: 15900000000
     PhoneNumbers: str = Field(
         ...,
-        title=f"""接收短信的手机号码。
+        title="""接收短信的手机号码。
 
 格式：
 * 国内短信：11位手机号码，例如15951955195。
@@ -127,7 +127,7 @@ class SendSmsQueryParams(BaseModel):
     # 例子: 阿里云
     SignName: str = Field(
         ...,
-        title=f"""短信签名名称。请在控制台**签名管理**页面**签名名称**一列查看。
+        title="""短信签名名称。请在控制台**签名管理**页面**签名名称**一列查看。
 
 <note>必须是已添加、并通过审核的短信签名。</note>""",
     )
@@ -135,29 +135,29 @@ class SendSmsQueryParams(BaseModel):
     # 例子: SMS_153055065
     TemplateCode: str = Field(
         ...,
-        title=f"""短信模板ID。请在控制台**模板管理**页面**模板CODE**一列查看。
+        title="""短信模板ID。请在控制台**模板管理**页面**模板CODE**一列查看。
 
 <note>必须是已添加、并通过审核的短信签名；且发送国际/港澳台消息时，请使用国际/港澳台短信模版。</note>""",
     )
 
     # 例子: 155780923770
-    OwnerId: Optional[int] = Field(None, title=f"""RAM用户的虚拟账号ID。""")
+    OwnerId: Optional[int] = Field(None, title="""RAM用户的虚拟账号ID。""")
 
     # 例子: {"code":"1111"}
     TemplateParam: Optional[str] = Field(
         None,
-        title=f"""短信模板变量对应的实际值，JSON格式。
+        title="""短信模板变量对应的实际值，JSON格式。
 
 <note>如果JSON中需要带换行符，请参照标准的JSON协议处理。</note>""",
     )
 
     # 例子: 90999
     SmsUpExtendCode: Optional[str] = Field(
-        None, title=f"""上行短信扩展码，无特殊需要此字段的用户请忽略此字段。"""
+        None, title="""上行短信扩展码，无特殊需要此字段的用户请忽略此字段。"""
     )
 
     # 例子: abcdefgh
-    OutId: Optional[str] = Field(None, title=f"""外部流水扩展字段。""")
+    OutId: Optional[str] = Field(None, title="""外部流水扩展字段。""")
 
     Action: str = Field("SendSms", title="系统的Action")
 
@@ -168,12 +168,12 @@ class AddSmsSignSignFileListField(BaseModel):
 
 
 class AddSmsSignQueryParams(BaseModel):
-    RegionId: Optional[str] = Field(None, title=f"""""")
+    RegionId: Optional[str] = Field(None, title="""""")
 
     # 例子: 阿里云
     SignName: str = Field(
         ...,
-        title=f"""签名名称。
+        title="""签名名称。
 
 > 签名必须符合[个人用户签名规范](~~108076~~)或[企业用户签名规范](~~108254~~)。""",
     )
@@ -181,7 +181,7 @@ class AddSmsSignQueryParams(BaseModel):
     # 例子: 1
     SignSource: int = Field(
         ...,
-        title=f"""签名来源。其中：
+        title="""签名来源。其中：
 
 - 0：企事业单位的全称或简称。
 - 1：工信部备案网站的全称或简称。
@@ -196,30 +196,30 @@ class AddSmsSignQueryParams(BaseModel):
     # 例子: 当前的短信签名应用于双11大促推广营销
     Remark: str = Field(
         ...,
-        title=f"""短信签名申请说明。请在申请说明中详细描述您的业务使用场景，申请工信部备案网站的全称或简称请在此处填写域名，长度不超过200个字符。""",
+        title="""短信签名申请说明。请在申请说明中详细描述您的业务使用场景，申请工信部备案网站的全称或简称请在此处填写域名，长度不超过200个字符。""",
     )
 
-    SignFileList: List[AddSmsSignSignFileListField] = Field(..., title=f"""""")
+    SignFileList: List[AddSmsSignSignFileListField] = Field(..., title="""""")
 
     # 例子: 155780923770
-    OwnerId: Optional[int] = Field(None, title=f"""RAM用户的虚拟账号ID。""")
+    OwnerId: Optional[int] = Field(None, title="""RAM用户的虚拟账号ID。""")
 
     Action: str = Field("AddSmsSign", title="系统的Action")
 
 
 class DeleteSmsSignQueryParams(BaseModel):
-    RegionId: Optional[str] = Field(None, title=f"""""")
+    RegionId: Optional[str] = Field(None, title="""""")
 
     # 例子: 阿里云
     SignName: str = Field(
         ...,
-        title=f"""短信签名。
+        title="""短信签名。
 
 > 必须是本账号已申请的短信签名。""",
     )
 
     # 例子: 155780923770
-    OwnerId: Optional[int] = Field(None, title=f"""RAM用户的虚拟账号ID。""")
+    OwnerId: Optional[int] = Field(None, title="""RAM用户的虚拟账号ID。""")
 
     Action: str = Field("DeleteSmsSign", title="系统的Action")
 
@@ -230,12 +230,12 @@ class ModifySmsSignSignFileListField(BaseModel):
 
 
 class ModifySmsSignQueryParams(BaseModel):
-    RegionId: Optional[str] = Field(None, title=f"""""")
+    RegionId: Optional[str] = Field(None, title="""""")
 
     # 例子: 阿里云
     SignName: str = Field(
         ...,
-        title=f"""签名内容。
+        title="""签名内容。
 
 > 签名内容必须符合[个人用户签名规范](~~108076~~)或[企业用户签名规范](~~108254~~)。""",
     )
@@ -243,7 +243,7 @@ class ModifySmsSignQueryParams(BaseModel):
     # 例子: 1
     SignSource: int = Field(
         ...,
-        title=f"""签名来源。其中：
+        title="""签名来源。其中：
 
 - 0：企事业单位的全称或简称。
 - 1：工信部备案网站的全称或简称。
@@ -258,24 +258,24 @@ class ModifySmsSignQueryParams(BaseModel):
     # 例子: 当前的短信签名应用于双11大促推广营销
     Remark: str = Field(
         ...,
-        title=f"""短信签名申请说明。请在申请说明中详细描述您的业务使用场景，申请工信部备案网站的全称或简称请在此处填写域名，长度不超过200个字符。""",
+        title="""短信签名申请说明。请在申请说明中详细描述您的业务使用场景，申请工信部备案网站的全称或简称请在此处填写域名，长度不超过200个字符。""",
     )
 
-    SignFileList: List[ModifySmsSignSignFileListField] = Field(..., title=f"""""")
+    SignFileList: List[ModifySmsSignSignFileListField] = Field(..., title="""""")
 
     # 例子: 155780923770
-    OwnerId: Optional[int] = Field(None, title=f"""RAM用户的虚拟账号ID。""")
+    OwnerId: Optional[int] = Field(None, title="""RAM用户的虚拟账号ID。""")
 
     Action: str = Field("ModifySmsSign", title="系统的Action")
 
 
 class AddSmsTemplateQueryParams(BaseModel):
-    RegionId: Optional[str] = Field(None, title=f"""""")
+    RegionId: Optional[str] = Field(None, title="""""")
 
     # 例子: 1
     TemplateType: int = Field(
         ...,
-        title=f"""短信类型。其中：
+        title="""短信类型。其中：
 - 0：验证码。
 - 1：短信通知。
 - 2：推广短信。
@@ -283,146 +283,146 @@ class AddSmsTemplateQueryParams(BaseModel):
     )
 
     # 例子: 阿里云短信测试模板
-    TemplateName: str = Field(..., title=f"""模板名称，长度为1~30个字符。""")
+    TemplateName: str = Field(..., title="""模板名称，长度为1~30个字符。""")
 
     # 例子: 您正在申请手机注册，验证码为：${code}，5分钟内有效！
     TemplateContent: str = Field(
         ...,
-        title=f"""模板内容，长度为1~500个字符。
+        title="""模板内容，长度为1~500个字符。
 
 模板内容需要符合[文本短信模板规范](~~108253~~)或[国际/港澳台短信模板规范](~~108254~~)。""",
     )
 
     # 例子: 当前的短信模板应用于双11大促推广营销
-    Remark: str = Field(..., title=f"""短信模板申请说明。请在申请说明中描述您的业务使用场景，长度为1~100个字符。""")
+    Remark: str = Field(..., title="""短信模板申请说明。请在申请说明中描述您的业务使用场景，长度为1~100个字符。""")
 
     # 例子: 155780923770
-    OwnerId: Optional[int] = Field(None, title=f"""RAM用户的虚拟账号ID。""")
+    OwnerId: Optional[int] = Field(None, title="""RAM用户的虚拟账号ID。""")
 
     Action: str = Field("AddSmsTemplate", title="系统的Action")
 
 
 class ModifySmsTemplateQueryParams(BaseModel):
-    RegionId: Optional[str] = Field(None, title=f"""""")
+    RegionId: Optional[str] = Field(None, title="""""")
 
-    TemplateType: int = Field(..., title=f"""""")
+    TemplateType: int = Field(..., title="""""")
 
-    TemplateName: str = Field(..., title=f"""""")
+    TemplateName: str = Field(..., title="""""")
 
-    TemplateCode: str = Field(..., title=f"""""")
+    TemplateCode: str = Field(..., title="""""")
 
-    TemplateContent: str = Field(..., title=f"""""")
+    TemplateContent: str = Field(..., title="""""")
 
-    Remark: str = Field(..., title=f"""""")
+    Remark: str = Field(..., title="""""")
 
-    OwnerId: Optional[int] = Field(None, title=f"""""")
+    OwnerId: Optional[int] = Field(None, title="""""")
 
     Action: str = Field("ModifySmsTemplate", title="系统的Action")
 
 
 class QuerySmsTemplateQueryParams(BaseModel):
-    RegionId: Optional[str] = Field(None, title=f"""""")
+    RegionId: Optional[str] = Field(None, title="""""")
 
-    TemplateCode: str = Field(..., title=f"""""")
+    TemplateCode: str = Field(..., title="""""")
 
-    OwnerId: Optional[int] = Field(None, title=f"""""")
+    OwnerId: Optional[int] = Field(None, title="""""")
 
     Action: str = Field("QuerySmsTemplate", title="系统的Action")
 
 
 class DeleteSmsTemplateQueryParams(BaseModel):
-    RegionId: Optional[str] = Field(None, title=f"""""")
+    RegionId: Optional[str] = Field(None, title="""""")
 
-    TemplateCode: str = Field(..., title=f"""""")
+    TemplateCode: str = Field(..., title="""""")
 
-    OwnerId: Optional[int] = Field(None, title=f"""""")
+    OwnerId: Optional[int] = Field(None, title="""""")
 
     Action: str = Field("DeleteSmsTemplate", title="系统的Action")
 
 
 class QuerySmsSignQueryParams(BaseModel):
-    RegionId: Optional[str] = Field(None, title=f"""""")
+    RegionId: Optional[str] = Field(None, title="""""")
 
-    SignName: str = Field(..., title=f"""""")
+    SignName: str = Field(..., title="""""")
 
-    OwnerId: Optional[int] = Field(None, title=f"""""")
+    OwnerId: Optional[int] = Field(None, title="""""")
 
     Action: str = Field("QuerySmsSign", title="系统的Action")
 
 
 class AddShortUrlQueryParams(BaseModel):
-    RegionId: Optional[str] = Field(None, title=f"""""")
+    RegionId: Optional[str] = Field(None, title="""""")
 
-    OwnerId: Optional[int] = Field(None, title=f"""""")
+    OwnerId: Optional[int] = Field(None, title="""""")
 
     Action: str = Field("AddShortUrl", title="系统的Action")
 
 
 class AddShortUrlBodyParams(BaseModel):
-    SourceUrl: Optional[str] = Field(None, title=f"""""")
+    SourceUrl: Optional[str] = Field(None, title="""""")
 
-    ShortUrlName: Optional[str] = Field(None, title=f"""""")
+    ShortUrlName: Optional[str] = Field(None, title="""""")
 
-    EffectiveDays: Optional[str] = Field(None, title=f"""""")
+    EffectiveDays: Optional[str] = Field(None, title="""""")
 
-    ProdCode: Optional[str] = Field(None, title=f"""""")
+    ProdCode: Optional[str] = Field(None, title="""""")
 
     Action: str = Field("AddShortUrl", title="系统的Action")
 
 
 class CreateShortParamQueryParams(BaseModel):
-    RegionId: Optional[str] = Field(None, title=f"""""")
+    RegionId: Optional[str] = Field(None, title="""""")
 
-    OwnerId: Optional[int] = Field(None, title=f"""""")
+    OwnerId: Optional[int] = Field(None, title="""""")
 
     Action: str = Field("CreateShortParam", title="系统的Action")
 
 
 class CreateShortParamBodyParams(BaseModel):
-    PhoneNumbers: Optional[str] = Field(None, title=f"""""")
+    PhoneNumbers: Optional[str] = Field(None, title="""""")
 
-    ProdCode: Optional[str] = Field(None, title=f"""""")
+    ProdCode: Optional[str] = Field(None, title="""""")
 
     Action: str = Field("CreateShortParam", title="系统的Action")
 
 
 class DeleteShortUrlQueryParams(BaseModel):
-    RegionId: Optional[str] = Field(None, title=f"""""")
+    RegionId: Optional[str] = Field(None, title="""""")
 
-    OwnerId: Optional[int] = Field(None, title=f"""""")
+    OwnerId: Optional[int] = Field(None, title="""""")
 
     Action: str = Field("DeleteShortUrl", title="系统的Action")
 
 
 class DeleteShortUrlBodyParams(BaseModel):
-    SourceUrl: Optional[str] = Field(None, title=f"""""")
+    SourceUrl: Optional[str] = Field(None, title="""""")
 
-    ProdCode: Optional[str] = Field(None, title=f"""""")
+    ProdCode: Optional[str] = Field(None, title="""""")
 
     Action: str = Field("DeleteShortUrl", title="系统的Action")
 
 
 class QueryShortUrlQueryParams(BaseModel):
-    RegionId: Optional[str] = Field(None, title=f"""""")
+    RegionId: Optional[str] = Field(None, title="""""")
 
-    OwnerId: Optional[int] = Field(None, title=f"""""")
+    OwnerId: Optional[int] = Field(None, title="""""")
 
     Action: str = Field("QueryShortUrl", title="系统的Action")
 
 
 class QueryShortUrlBodyParams(BaseModel):
-    ProdCode: Optional[str] = Field(None, title=f"""""")
+    ProdCode: Optional[str] = Field(None, title="""""")
 
-    ShortUrl: Optional[str] = Field(None, title=f"""""")
+    ShortUrl: Optional[str] = Field(None, title="""""")
 
     Action: str = Field("QueryShortUrl", title="系统的Action")
 
 
 class SmsSendDetailDTO(BaseModel):
-    PhoneNum: str = Field(..., title=f"""接收短信的手机号码。""")
+    PhoneNum: str = Field(..., title="""接收短信的手机号码。""")
     SendStatus: int = Field(
         ...,
-        title=f"""短信发送状态，包括：
+        title="""短信发送状态，包括：
 
 - 1：等待回执。
 - 2：发送失败。
@@ -430,194 +430,194 @@ class SmsSendDetailDTO(BaseModel):
     )
     ErrCode: str = Field(
         ...,
-        title=f"""运营商短信状态码。
+        title="""运营商短信状态码。
 
 -  短信发送成功：DELIVRD。
 -  短信发送失败：失败错误码请参考[错误码文档](~~101347~~)。""",
     )
-    TemplateCode: str = Field(..., title=f"""短信模板ID。""")
-    Content: str = Field(..., title=f"""短信内容。""")
-    SendDate: str = Field(..., title=f"""短信发送日期和时间。""")
-    ReceiveDate: str = Field(..., title=f"""短信接收日期和时间。""")
-    OutId: str = Field(..., title=f"""外部流水扩展字段。""")
+    TemplateCode: str = Field(..., title="""短信模板ID。""")
+    Content: str = Field(..., title="""短信内容。""")
+    SendDate: str = Field(..., title="""短信发送日期和时间。""")
+    ReceiveDate: str = Field(..., title="""短信接收日期和时间。""")
+    OutId: str = Field(..., title="""外部流水扩展字段。""")
 
 
 class QuerySendDetailsResp(BaseModel):
-    RequestId: str = Field(..., title=f"""请求ID。""")
+    RequestId: str = Field(..., title="""请求ID。""")
     Code: str = Field(
         ...,
-        title=f"""请求状态码。
+        title="""请求状态码。
 - 返回OK代表请求成功。
 - 其他错误码详见[错误码列表](~~101346~~)。""",
     )
-    Message: str = Field(..., title=f"""状态码的描述。""")
-    TotalCount: str = Field(..., title=f"""短信发送总条数。""")
+    Message: str = Field(..., title="""状态码的描述。""")
+    TotalCount: str = Field(..., title="""短信发送总条数。""")
 
     SmsSendDetailDTOs: List[SmsSendDetailDTO] = Field(..., title="详细数据")
 
 
 class SendBatchSmsResp(BaseModel):
-    RequestId: str = Field(..., title=f"""请求ID。""")
-    BizId: str = Field(..., title=f"""发送回执ID，可根据该ID在接口QuerySendDetails中查询具体的发送状态。""")
+    RequestId: str = Field(..., title="""请求ID。""")
+    BizId: str = Field(..., title="""发送回执ID，可根据该ID在接口QuerySendDetails中查询具体的发送状态。""")
     Code: str = Field(
         ...,
-        title=f"""请求状态码。
+        title="""请求状态码。
 * 返回OK代表请求成功。
 * 其他错误码详见[错误码列表](~~101346~~)。""",
     )
-    Message: str = Field(..., title=f"""状态码的描述。""")
+    Message: str = Field(..., title="""状态码的描述。""")
 
 
 class SendSmsResp(BaseModel):
-    RequestId: str = Field(..., title=f"""请求ID。""")
-    BizId: str = Field(..., title=f"""发送回执ID，可根据该ID在接口QuerySendDetails中查询具体的发送状态。""")
+    RequestId: str = Field(..., title="""请求ID。""")
+    BizId: str = Field(..., title="""发送回执ID，可根据该ID在接口QuerySendDetails中查询具体的发送状态。""")
     Code: str = Field(
         ...,
-        title=f"""请求状态码。
+        title="""请求状态码。
 * 返回OK代表请求成功。
 * 其他错误码详见[错误码列表](~~101346~~)。""",
     )
-    Message: str = Field(..., title=f"""状态码的描述。""")
+    Message: str = Field(..., title="""状态码的描述。""")
 
 
 class AddSmsSignResp(BaseModel):
-    RequestId: str = Field(..., title=f"""请求ID。""")
-    SignName: str = Field(..., title=f"""签名名称。""")
+    RequestId: str = Field(..., title="""请求ID。""")
+    SignName: str = Field(..., title="""签名名称。""")
     Code: str = Field(
         ...,
-        title=f"""请求状态码。
+        title="""请求状态码。
 * 返回OK代表请求成功。
 * 其他错误码详见[错误码列表](~~101346~~)。""",
     )
-    Message: str = Field(..., title=f"""状态码的描述。""")
+    Message: str = Field(..., title="""状态码的描述。""")
 
 
 class DeleteSmsSignResp(BaseModel):
-    RequestId: str = Field(..., title=f"""请求ID。""")
-    SignName: str = Field(..., title=f"""签名名称。""")
+    RequestId: str = Field(..., title="""请求ID。""")
+    SignName: str = Field(..., title="""签名名称。""")
     Code: str = Field(
         ...,
-        title=f"""请求状态码。
+        title="""请求状态码。
 * 返回OK代表请求成功。
 * 其他错误码详见[错误码列表](~~101346~~)。""",
     )
-    Message: str = Field(..., title=f"""状态码的描述。""")
+    Message: str = Field(..., title="""状态码的描述。""")
 
 
 class ModifySmsSignResp(BaseModel):
-    RequestId: str = Field(..., title=f"""请求ID。""")
-    SignName: str = Field(..., title=f"""签名名称。""")
+    RequestId: str = Field(..., title="""请求ID。""")
+    SignName: str = Field(..., title="""签名名称。""")
     Code: str = Field(
         ...,
-        title=f"""请求状态码。
+        title="""请求状态码。
 * 返回OK代表请求成功。
 * 其他错误码详见[错误码列表](~~101346~~)。""",
     )
-    Message: str = Field(..., title=f"""状态码的描述。""")
+    Message: str = Field(..., title="""状态码的描述。""")
 
 
 class AddSmsTemplateResp(BaseModel):
-    RequestId: str = Field(..., title=f"""请求ID。""")
+    RequestId: str = Field(..., title="""请求ID。""")
     TemplateCode: str = Field(
         ...,
-        title=f"""短信模板CODE。您可以使用模板CODE通过API接口**QuerySmsTemplate**或在控制台查看模板申请状态和结果。""",
+        title="""短信模板CODE。您可以使用模板CODE通过API接口**QuerySmsTemplate**或在控制台查看模板申请状态和结果。""",
     )
     Code: str = Field(
         ...,
-        title=f"""请求状态码。
+        title="""请求状态码。
 * 返回OK代表请求成功。
 * 其他错误码详见[错误码列表](~~101346~~)。""",
     )
-    Message: str = Field(..., title=f"""状态码的描述。""")
+    Message: str = Field(..., title="""状态码的描述。""")
 
 
 class ModifySmsTemplateResp(BaseModel):
-    RequestId: str = Field(..., title=f"""""")
-    TemplateCode: str = Field(..., title=f"""""")
-    Code: str = Field(..., title=f"""""")
-    Message: str = Field(..., title=f"""""")
+    RequestId: str = Field(..., title="""""")
+    TemplateCode: str = Field(..., title="""""")
+    Code: str = Field(..., title="""""")
+    Message: str = Field(..., title="""""")
 
 
 class QuerySmsTemplateResp(BaseModel):
-    RequestId: str = Field(..., title=f"""""")
-    Code: str = Field(..., title=f"""""")
-    Message: str = Field(..., title=f"""""")
-    TemplateStatus: int = Field(..., title=f"""""")
-    Reason: str = Field(..., title=f"""""")
-    TemplateCode: str = Field(..., title=f"""""")
-    TemplateType: int = Field(..., title=f"""""")
-    TemplateName: str = Field(..., title=f"""""")
-    TemplateContent: str = Field(..., title=f"""""")
-    CreateDate: str = Field(..., title=f"""""")
+    RequestId: str = Field(..., title="""""")
+    Code: str = Field(..., title="""""")
+    Message: str = Field(..., title="""""")
+    TemplateStatus: int = Field(..., title="""""")
+    Reason: str = Field(..., title="""""")
+    TemplateCode: str = Field(..., title="""""")
+    TemplateType: int = Field(..., title="""""")
+    TemplateName: str = Field(..., title="""""")
+    TemplateContent: str = Field(..., title="""""")
+    CreateDate: str = Field(..., title="""""")
 
 
 class DeleteSmsTemplateResp(BaseModel):
-    RequestId: str = Field(..., title=f"""""")
-    TemplateCode: str = Field(..., title=f"""""")
-    Code: str = Field(..., title=f"""""")
-    Message: str = Field(..., title=f"""""")
+    RequestId: str = Field(..., title="""""")
+    TemplateCode: str = Field(..., title="""""")
+    Code: str = Field(..., title="""""")
+    Message: str = Field(..., title="""""")
 
 
 class QuerySmsSignResp(BaseModel):
-    RequestId: str = Field(..., title=f"""""")
-    Code: str = Field(..., title=f"""""")
-    Message: str = Field(..., title=f"""""")
-    SignStatus: int = Field(..., title=f"""""")
-    Reason: str = Field(..., title=f"""""")
-    SignName: str = Field(..., title=f"""""")
-    CreateDate: str = Field(..., title=f"""""")
+    RequestId: str = Field(..., title="""""")
+    Code: str = Field(..., title="""""")
+    Message: str = Field(..., title="""""")
+    SignStatus: int = Field(..., title="""""")
+    Reason: str = Field(..., title="""""")
+    SignName: str = Field(..., title="""""")
+    CreateDate: str = Field(..., title="""""")
 
 
 class AddShortUrlRespData(BaseModel):
-    SourceUrl: str = Field(..., title=f"""""")
-    ExpireDate: str = Field(..., title=f"""""")
-    ShortUrl: str = Field(..., title=f"""""")
+    SourceUrl: str = Field(..., title="""""")
+    ExpireDate: str = Field(..., title="""""")
+    ShortUrl: str = Field(..., title="""""")
 
 
 class AddShortUrlResp(BaseModel):
-    RequestId: str = Field(..., title=f"""""")
-    Code: str = Field(..., title=f"""""")
-    Message: str = Field(..., title=f"""""")
+    RequestId: str = Field(..., title="""""")
+    Code: str = Field(..., title="""""")
+    Message: str = Field(..., title="""""")
 
     Data: AddShortUrlRespData = Field(..., title="详细数据")
 
 
 class CreateShortParamRespData(BaseModel):
-    ParamDetail: str = Field(..., title=f"""""")
-    PhoneNumbers: str = Field(..., title=f"""""")
-    ShortParam: str = Field(..., title=f"""""")
+    ParamDetail: str = Field(..., title="""""")
+    PhoneNumbers: str = Field(..., title="""""")
+    ShortParam: str = Field(..., title="""""")
 
 
 class CreateShortParamResp(BaseModel):
-    RequestId: str = Field(..., title=f"""""")
-    Code: str = Field(..., title=f"""""")
-    Message: str = Field(..., title=f"""""")
+    RequestId: str = Field(..., title="""""")
+    Code: str = Field(..., title="""""")
+    Message: str = Field(..., title="""""")
 
     Data: CreateShortParamRespData = Field(..., title="详细数据")
 
 
 class DeleteShortUrlResp(BaseModel):
-    RequestId: str = Field(..., title=f"""""")
-    Code: str = Field(..., title=f"""""")
-    Message: str = Field(..., title=f"""""")
-    Data: str = Field(..., title=f"""""")
+    RequestId: str = Field(..., title="""""")
+    Code: str = Field(..., title="""""")
+    Message: str = Field(..., title="""""")
+    Data: str = Field(..., title="""""")
 
 
 class QueryShortUrlRespData(BaseModel):
-    SourceUrl: str = Field(..., title=f"""""")
-    ShortUrlName: str = Field(..., title=f"""""")
-    ShortUrlStatus: str = Field(..., title=f"""""")
-    ShortUrl: str = Field(..., title=f"""""")
-    CreateDate: str = Field(..., title=f"""""")
-    ExpireDate: str = Field(..., title=f"""""")
-    PageViewCount: str = Field(..., title=f"""""")
-    UniqueVisitorCount: str = Field(..., title=f"""""")
+    SourceUrl: str = Field(..., title="""""")
+    ShortUrlName: str = Field(..., title="""""")
+    ShortUrlStatus: str = Field(..., title="""""")
+    ShortUrl: str = Field(..., title="""""")
+    CreateDate: str = Field(..., title="""""")
+    ExpireDate: str = Field(..., title="""""")
+    PageViewCount: str = Field(..., title="""""")
+    UniqueVisitorCount: str = Field(..., title="""""")
 
 
 class QueryShortUrlResp(BaseModel):
-    RequestId: str = Field(..., title=f"""""")
-    Code: str = Field(..., title=f"""""")
-    Message: str = Field(..., title=f"""""")
+    RequestId: str = Field(..., title="""""")
+    Code: str = Field(..., title="""""")
+    Message: str = Field(..., title="""""")
 
     Data: QueryShortUrlRespData = Field(..., title="详细数据")
 
