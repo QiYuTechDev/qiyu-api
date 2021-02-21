@@ -13,8 +13,6 @@ from .channel_invite_code_args import ChannelInviteCodeArgs
 from .channel_save_record_args import ChannelSaveRecordArgs
 from .gao_yong_args import GaoYongArgs
 from .gao_yong_resp import GaoYongResp
-from .guess_you_like_args import GuessYouLikeArgs
-from .guess_you_like_resp import GuessYouLikeResp
 from .item_detail_resp import ItemDetailResp
 from .item_detail_v2_args import ItemDetailV2Args
 from .item_detail_v2_resp import ItemDetailV2Resp
@@ -111,14 +109,6 @@ class ZTK(object):
         url = await args.to_http_url()
         j = await self._do_query(url)
         return GaoYongResp.from_dict(j)
-
-    async def guess_you_like(self, args: GuessYouLikeArgs) -> GuessYouLikeResp:
-        """
-        猜你喜欢
-        """
-        url = await args.to_http_url()
-        j = await self._do_query(url)
-        return GuessYouLikeResp.from_dict(j)
 
     async def item_detail_v2(self, args: ItemDetailV2Args) -> ItemDetailV2Resp:
         args.sid = await self._ztk_sid()

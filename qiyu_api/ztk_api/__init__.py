@@ -17,8 +17,6 @@ from .gao_yong_args import GaoYongArgs  # noqa
 from .gao_yong_model import GaoYongModel  # noqa
 from .gao_yong_resp import GaoYongResp  # noqa
 from .guess_you_like_args import GuessYouLikeArgs  # noqa
-from .guess_you_like_model import GuessYouLikeModel  # noqa
-from .guess_you_like_resp import GuessYouLikeResp  # noqa
 from .item_detail_args import ItemDetailArgs  # noqa
 from .item_detail_model import ItemDetailModel  # noqa
 from .item_detail_v2_args import ItemDetailV2Args  # noqa

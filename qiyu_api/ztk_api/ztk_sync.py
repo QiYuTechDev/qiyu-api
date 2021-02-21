@@ -14,8 +14,6 @@ from .channel_id_list_args import ChannelIdListArgs
 from .channel_invite_code_args import ChannelInviteCodeArgs
 from .channel_save_record_args import ChannelSaveRecordArgs
 from .gao_yong_args import GaoYongArgs
-from .guess_you_like_args import GuessYouLikeArgs
-from .guess_you_like_resp import GuessYouLikeResp
 from .item_detail_args import ItemDetailArgs
 from .item_detail_resp import ItemDetailResp
 from .item_detail_v2_args import ItemDetailV2Args
@@ -103,14 +101,6 @@ class ZTKSync(object):
         url = args.to_http_url_sync()
         j = self._do_query(url)
         return j
-
-    def guess_you_like(self, args: GuessYouLikeArgs) -> GuessYouLikeResp:
-        """
-        猜你喜欢
-        """
-        url = args.to_http_url_sync()
-        j = self._do_query(url)
-        return GuessYouLikeResp.from_dict(j)
 
     def item_detail(self, args: ItemDetailArgs) -> ItemDetailResp:
         """
