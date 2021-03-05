@@ -11,6 +11,8 @@ import structlog
 from .bang_dan_tui_jian_args import BangDanTuiJianArgs
 from .batch_item_args import BatchItemsArgs
 from .batch_item_resp import BatchItemResp, BatchItemContentItem
+from .gao_yong_args import GaoYongArgs
+from .gao_yong_resp import GaoYongResp, GaoYongContentItem
 from .guess_you_like_args import GuessYouLikeArgs
 from .ju_hua_suan_args import JuHuaSuanArgs
 from .keyword_args import KeywordArgs
@@ -37,6 +39,53 @@ class ZTKStd(object):
         self._http: Optional[aiohttp.ClientSession] = None
         self._sid = ztk_sid
         self._logger = logger
+
+    async def gao_yong(self, args: GaoYongArgs) -> Optional[TbkItemInfo]:
+        """
+        高佣转链标准化
+        """
+        url = await args.to_http_url()
+        ret = await self._do_query(url)
+        resp = GaoYongResp.from_dict(ret)
+        if resp.status != 200:
+            self._logger.error(f"request ztk {url=} failed with: {resp=}")
+            return None
+        if len(resp.content) == 0:
+            self._logger.info(f"ztk not find: tao_id={args.num_iid}")
+            return None
+
+        item = GaoYongContentItem(**resp.content[0])
+
+        coupon_recv_num = int(item.coupon_total_count) - int(item.coupon_remain_count)
+
+        return TbkItemInfo(
+            tao_id=item.tao_id,
+            tao_img=item.pict_url,
+            tao_link=item.item_url,
+            tao_details=item.pcDescContent.split("|"),
+            title_short=item.title,
+            title_long=item.tao_title,
+            price_origin=float(item.size),
+            price_actual=float(item.quanhou_jiage),
+            price_coupon=float(item.coupon_info_money),
+            seller_id=item.seller_id,
+            seller_name=item.shop_title,
+            seller_logo=item.shopIcon,
+            score_dsr=float(item.score1),
+            score_ship=float(item.score3),
+            score_service=float(item.score2),
+            commission_rate=float(item.tkrate3),
+            commission_money=float(item.tkfee3),
+            sale_month=int(item.volume),
+            sale_day=0,
+            sale_two_hours=0,
+            coupon_start_time=datetime.fromisoformat(item.coupon_start_time),
+            coupon_end_time=datetime.fromisoformat(item.coupon_end_time),
+            coupon_total_num=int(item.coupon_total_count),
+            coupon_recv_num=coupon_recv_num,
+            coupon_link=item.coupon_click_url,
+            yun_fei_xian=item.yunfeixian == "1",
+        )
 
     async def bang_dan_tui_jian(
         self, args: BangDanTuiJianArgs
@@ -77,7 +126,7 @@ class ZTKStd(object):
         ret = await self._do_list_query_help(url)
         return ret
 
-    async def keyword(self) -> list:
+    async def keyword(self) -> List[str]:
         """
         关键词词典API
         """

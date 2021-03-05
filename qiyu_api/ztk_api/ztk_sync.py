@@ -3,7 +3,7 @@
 
 """
 import json
-from typing import Optional, List
+from typing import Optional
 
 import requests
 import structlog
@@ -13,16 +13,11 @@ from .channel_account_info_args import ChannelAccountInfoArgs
 from .channel_id_list_args import ChannelIdListArgs
 from .channel_invite_code_args import ChannelInviteCodeArgs
 from .channel_save_record_args import ChannelSaveRecordArgs
-from .gao_yong_args import GaoYongArgs
 from .item_detail_args import ItemDetailArgs
 from .item_detail_resp import ItemDetailResp
 from .item_detail_v2_args import ItemDetailV2Args
 from .item_detail_v2_resp import ItemDetailV2Resp
-from .keyword_args import KeywordArgs
 from .new_order_args import NewOrderArgs
-from .search_args import SearchArgs
-from .search_resp import SearchResp
-from .suggest_args import SuggestArgs
 from .tkl_create_args import TKLCreateArgs
 from .tkl_create_resp import TKLCreateResp
 
@@ -84,16 +79,6 @@ class ZTKSync(object):
         j = self._do_query(url)
         return j
 
-    def gao_yong(self, args: GaoYongArgs):
-        """
-        高佣转链API (商品ID)
-        """
-        args.sid = self._ztk_sid()
-
-        url = args.to_http_url_sync()
-        j = self._do_query(url)
-        return j
-
     def item_detail(self, args: ItemDetailArgs) -> ItemDetailResp:
         """
         折淘客 全网商品详情接口参数
@@ -115,20 +100,6 @@ class ZTKSync(object):
         j = self._do_query(url)
         return ItemDetailV2Resp.from_dict(j)
 
-    def keyword(self) -> list:
-        """
-        关键词词典API
-        """
-        args = KeywordArgs()
-        url = args.to_http_url_sync()
-        j = self._do_query(url)
-        if isinstance(j, dict):
-            if j["status"] == 200:
-                content = j["content"]
-                assert isinstance(content, list)
-                return list(map(lambda x: x["keywords"], content))
-        return []
-
     def new_order(self, args: NewOrderArgs) -> dict:
         """
         新订单获取
@@ -138,28 +109,6 @@ class ZTKSync(object):
         url = args.to_http_url_sync()
         j = self._do_query(url)
         return j
-
-    def search(self, args: SearchArgs) -> SearchResp:
-        """
-        全网搜索
-        """
-        url = args.to_http_url_sync()
-        j = self._do_query(url)
-        return SearchResp.from_dict(j)
-
-    def suggest(self, args: SuggestArgs) -> Optional[List[str]]:
-        """
-        联想词
-        """
-        url = args.to_http_url_sync()
-        j = self._do_query(url)
-        if not isinstance(j, dict):
-            self._logger.warn("request ztk suggest failed")
-            return None
-
-        result = j["result"]
-
-        return list(map(lambda item: item[0], result))
 
     def tkl_create(self, args: TKLCreateArgs) -> TKLCreateResp:
         """

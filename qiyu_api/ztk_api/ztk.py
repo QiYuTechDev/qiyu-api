@@ -1,5 +1,5 @@
 import json
-from typing import Optional, List
+from typing import Optional
 
 import aiohttp
 import structlog
@@ -11,16 +11,10 @@ from .channel_account_info_args import ChannelAccountInfoArgs
 from .channel_id_list_args import ChannelIdListArgs
 from .channel_invite_code_args import ChannelInviteCodeArgs
 from .channel_save_record_args import ChannelSaveRecordArgs
-from .gao_yong_args import GaoYongArgs
-from .gao_yong_resp import GaoYongResp
 from .item_detail_resp import ItemDetailResp
 from .item_detail_v2_args import ItemDetailV2Args
 from .item_detail_v2_resp import ItemDetailV2Resp
-from .keyword_args import KeywordArgs
 from .new_order_args import NewOrderArgs
-from .search_args import SearchArgs
-from .search_resp import SearchResp
-from .suggest_args import SuggestArgs
 from .tkl_create_args import TKLCreateArgs
 from .tkl_create_resp import TKLCreateResp
 
@@ -92,36 +86,12 @@ class ZTK(object):
         j = await self._do_query(url)
         return j
 
-    async def gao_yong(self, args: GaoYongArgs) -> GaoYongResp:
-        """
-        高佣转链API (商品ID)
-        """
-        args.sid = await self._ztk_sid()
-
-        url = await args.to_http_url()
-        j = await self._do_query(url)
-        return GaoYongResp.from_dict(j)
-
     async def item_detail_v2(self, args: ItemDetailV2Args) -> ItemDetailV2Resp:
         args.sid = await self._ztk_sid()
 
         url = await args.to_http_url()
         j = await self._do_query(url)
         return ItemDetailV2Resp.from_dict(j)
-
-    async def keyword(self) -> list:
-        """
-        关键词词典API
-        """
-        args = KeywordArgs()
-        url = await args.to_http_url()
-        j = await self._do_query(url)
-        if isinstance(j, dict):
-            if j["status"] == 200:
-                content = j["content"]
-                assert isinstance(content, list)
-                return list(map(lambda x: x["keywords"], content))
-        return []
 
     async def new_order(self, args: NewOrderArgs):
         """
@@ -132,28 +102,6 @@ class ZTK(object):
         url = await args.to_http_url()
         j = await self._do_query(url)
         return ItemDetailResp.from_ztk_resp(j)
-
-    async def search(self, args: SearchArgs) -> SearchResp:
-        """
-        全网搜索
-        """
-        url = await args.to_http_url()
-        j = await self._do_query(url)
-        return SearchResp.from_dict(j)
-
-    async def suggest(self, args: SuggestArgs) -> Optional[List[str]]:
-        """
-        联想词
-        """
-        url = await args.to_http_url()
-        j = await self._do_query(url)
-        if not isinstance(j, dict):
-            self._logger.warn("request ztk suggest failed")
-            return None
-
-        result = j["result"]
-
-        return list(map(lambda item: item[0], result))
 
     async def tkl_create(self, args: TKLCreateArgs) -> TKLCreateResp:
         """
