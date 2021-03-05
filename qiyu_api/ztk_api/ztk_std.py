@@ -26,6 +26,13 @@ from ..tbk_api import TbkItemInfo
 __all__ = ["ZTKStd"]
 
 
+def to_std_time(s: Optional[str]) -> Optional[datetime]:
+    try:
+        return datetime.fromisoformat(s)
+    except ValueError:
+        return None
+
+
 class ZTKStd(object):
     """
     标准版本的 淘宝客 API
@@ -79,8 +86,8 @@ class ZTKStd(object):
             sale_month=int(item.volume),
             sale_day=0,
             sale_two_hours=0,
-            coupon_start_time=datetime.fromisoformat(item.coupon_start_time),
-            coupon_end_time=datetime.fromisoformat(item.coupon_end_time),
+            coupon_start_time=to_std_time(item.coupon_start_time),
+            coupon_end_time=to_std_time(item.coupon_end_time),
             coupon_total_num=int(item.coupon_total_count),
             coupon_recv_num=coupon_recv_num,
             coupon_link=item.coupon_click_url,
@@ -255,8 +262,8 @@ class ZTKStd(object):
                 sale_month=int(item.volume),
                 sale_day=0,
                 sale_two_hours=0,
-                coupon_start_time=datetime.fromisoformat(item.coupon_start_time),
-                coupon_end_time=datetime.fromisoformat(item.coupon_end_time),
+                coupon_start_time=to_std_time(item.coupon_start_time),
+                coupon_end_time=to_std_time(item.coupon_end_time),
                 coupon_total_num=int(item.coupon_total_count),
                 coupon_recv_num=coupon_recv_num,
                 coupon_link=None,
