@@ -1,4 +1,4 @@
-from .gen import *
+from .gen import *  # noqa
 
 __all__ = ["DtkAsyncApi"]
 
