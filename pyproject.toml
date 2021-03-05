@@ -14,7 +14,7 @@ pydantic = ">=1.7,<2"
 dataclasses-json = ">=0.5,<0.6"
 structlog = ">=21,<22"
 
-aiohttp = ">=3.7,<4"
+aiohttp = ">=3.7.4,<4"
 requests = ">=2.25,<3"
 
 # for mob api
