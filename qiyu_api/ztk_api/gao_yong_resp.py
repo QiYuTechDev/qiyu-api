@@ -1,78 +1,77 @@
-# 这个文件是由 json_code_gen_resp.py 自动生成的 请不要修改
 from dataclasses import dataclass
 from typing import List, Any
 
 from dataclasses_json import DataClassJsonMixin
+from pydantic import BaseModel, Field
 
 
-@dataclass
-class GaoYongContentItem(DataClassJsonMixin):
-    code: str
-    type_one_id: str
-    tao_id: str
-    title: str
-    jianjie: str
-    pict_url: str
-    user_type: str
-    seller_id: str
-    shop_dsr: str
-    volume: str
-    size: str
-    quanhou_jiage: str
-    date_time_yongjin: str
-    tkrate3: str
-    yongjin_type: str
-    coupon_id: str
-    coupon_start_time: str
-    coupon_end_time: str
-    coupon_info_money: str
-    coupon_total_count: str
-    coupon_remain_count: str
-    coupon_info: str
-    juhuasuan: str
-    taoqianggou: str
-    haitao: str
-    jiyoujia: str
-    jinpaimaijia: str
-    pinpai: str
-    pinpai_name: str
-    yunfeixian: str
-    nick: str
-    small_images: str
-    white_image: str
-    tao_title: str
-    provcity: str
-    shop_title: str
-    zhibo_url: str
-    sellCount: str
-    commentCount: str
-    favcount: str
-    score1: str
-    score2: str
-    score3: str
-    creditLevel: str
-    shopIcon: str
-    pcDescContent: str
-    taobao_url: str
-    category_id: str
-    category_name: str
-    level_one_category_id: str
-    level_one_category_name: str
-    tkfee3: str
-    biaoqian: str
-    tag: str
-    date_time: str
-    presale_discount_fee_text: str
-    presale_tail_end_time: str
-    presale_tail_start_time: str
-    presale_end_time: str
-    presale_start_time: str
-    presale_deposit: str
-    min_commission_rate: str
-    coupon_click_url: str
-    item_url: str
-    shorturl: str
-    tkl: str
+class GaoYongContentItem(BaseModel):
+    code: str = Field(None)
+    type_one_id: str = Field(None)
+    tao_id: str = Field(None)
+    title: str = Field(None)
+    jianjie: str = Field(None)
+    pict_url: str = Field(None)
+    user_type: str = Field(None)
+    seller_id: str = Field(None)
+    shop_dsr: str = Field(None)
+    volume: str = Field(None)
+    size: str = Field(None)
+    quanhou_jiage: str = Field(None)
+    date_time_yongjin: str = Field(None)
+    tkrate3: str = Field(None)
+    yongjin_type: str = Field(None)
+    coupon_id: str = Field(None)
+    coupon_start_time: str = Field(None)
+    coupon_end_time: str = Field(None)
+    coupon_info_money: str = Field(None)
+    coupon_total_count: str = Field(None)
+    coupon_remain_count: str = Field(None)
+    coupon_info: str = Field(None)
+    juhuasuan: str = Field(None)
+    taoqianggou: str = Field(None)
+    haitao: str = Field(None)
+    jiyoujia: str = Field(None)
+    jinpaimaijia: str = Field(None)
+    pinpai: str = Field(None)
+    pinpai_name: str = Field(None)
+    yunfeixian: str = Field(None)
+    nick: str = Field(None)
+    small_images: str = Field(None)
+    white_image: str = Field(None)
+    tao_title: str = Field(None)
+    provcity: str = Field(None)
+    shop_title: str = Field(None)
+    zhibo_url: str = Field(None)
+    sellCount: str = Field(None)
+    commentCount: str = Field(None)
+    favcount: str = Field(None)
+    score1: str = Field(None)
+    score2: str = Field(None)
+    score3: str = Field(None)
+    creditLevel: str = Field(None)
+    shopIcon: str = Field(None)
+    pcDescContent: str = Field(None)
+    taobao_url: str = Field(None)
+    category_id: str = Field(None)
+    category_name: str = Field(None)
+    level_one_category_id: str = Field(None)
+    level_one_category_name: str = Field(None)
+    tkfee3: str = Field(None)
+    biaoqian: str = Field(None)
+    tag: str = Field(None)
+    date_time: str = Field(None)
+    presale_discount_fee_text: str = Field(None)
+    presale_tail_end_time: str = Field(None)
+    presale_tail_start_time: str = Field(None)
+    presale_end_time: str = Field(None)
+    presale_start_time: str = Field(None)
+    presale_deposit: str = Field(None)
+    min_commission_rate: str = Field(None)
+    coupon_click_url: str = Field(None)
+    item_url: str = Field(None)
+    shorturl: str = Field(None)
+    tkl: str = Field(None)
 
 
 @dataclass
