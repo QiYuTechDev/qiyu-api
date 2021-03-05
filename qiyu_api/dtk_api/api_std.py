@@ -18,6 +18,20 @@ class DtkStdApi(object):
     def __init__(self, **kwargs):
         self._api = DtkAsyncApi(**kwargs)
 
+    async def gao_yong(
+        self, args: TbServiceGetPrivilegeLinkArgs
+    ) -> Optional[TbkItemInfo]:
+        info = await self._api.tb_service_get_privilege_link(args)
+        t = await self.get_goods_detail(args.goodsId)
+
+        t.coupon_link = info.couponClickUrl
+        t.coupon_start_time = info.couponStartTime
+        t.coupon_end_time = info.couponEndTime
+        t.coupon_total_num = int(info.couponTotalCount)
+        t.coupon_recv_num = int(info.couponTotalCount) - int(info.couponRemainCount)
+
+        return t
+
     async def get_brand_goods(self, brand_id: str, page_id: int) -> List[TbkItemInfo]:
         """
         获取超值大牌的商品列表

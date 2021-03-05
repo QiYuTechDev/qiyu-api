@@ -13,6 +13,7 @@ from .channel_account_info_args import ChannelAccountInfoArgs  # noqa
 from .channel_id_list_args import ChannelIdListArgs  # noqa
 from .channel_invite_code_args import ChannelInviteCodeArgs  # noqa
 from .channel_save_record_args import ChannelSaveRecordArgs  # noqa
+from .gao_yong_args import GaoYongArgs  # noqa
 from .guess_you_like_args import GuessYouLikeArgs  # noqa
 from .item_detail_args import ItemDetailArgs  # noqa
 from .item_detail_model import ItemDetailModel  # noqa
