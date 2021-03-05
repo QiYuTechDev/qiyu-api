@@ -1,6 +1,8 @@
 .idea
 poetry.lock
 
+dev.env
+
 .pytest_cache
 
 # Byte-compiled / optimized / DLL files

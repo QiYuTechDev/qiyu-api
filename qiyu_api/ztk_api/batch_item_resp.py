@@ -1,12 +1,11 @@
-# 这个文件是由 json_code_gen_resp.py 自动生成的 请不要修改
 from dataclasses import dataclass
 from typing import List, Any
 
 from dataclasses_json import DataClassJsonMixin
+from pydantic import BaseModel
 
 
-@dataclass
-class BatchItemContentItem(DataClassJsonMixin):
+class BatchItemContentItem(BaseModel):
     code: str
     type_one_id: str
     tao_id: str
