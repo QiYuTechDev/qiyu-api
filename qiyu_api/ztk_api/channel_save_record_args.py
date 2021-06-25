@@ -1,10 +1,8 @@
-from dataclasses import dataclass
 from typing import Optional
 
 from .base_args import BaseArgs
 
 
-@dataclass
 class ChannelSaveRecordArgs(BaseArgs):
     """
     淘宝客渠道备案API：用户进行渠道备案，生成新的渠道ID。

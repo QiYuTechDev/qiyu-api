@@ -98,7 +98,7 @@ class ZTKSync(object):
 
         url = args.to_http_url_sync()
         j = self._do_query(url)
-        return ItemDetailV2Resp.from_dict(j)
+        return ItemDetailV2Resp(**j)
 
     def new_order(self, args: NewOrderArgs) -> dict:
         """
@@ -118,7 +118,7 @@ class ZTKSync(object):
 
         url = args.to_http_url_sync()
         j = self._do_query(url)
-        return TKLCreateResp.from_dict(j)
+        return TKLCreateResp(**j)
 
     def do_query(self, url: str) -> dict:
         """

@@ -1,7 +1,5 @@
-from dataclasses import dataclass
 from typing import List, Any
 
-from dataclasses_json import DataClassJsonMixin
 from pydantic import BaseModel
 
 
@@ -70,7 +68,6 @@ class BatchItemContentItem(BaseModel):
     min_commission_rate: str
 
 
-@dataclass
-class BatchItemResp(DataClassJsonMixin):
+class BatchItemResp(BaseModel):
     status: int
     content: List[Any]

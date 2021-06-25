@@ -17,7 +17,7 @@ class APNsSync(object):
         推送消息给 指定的 iOS 设备
         """
         url = self._get_url_by_path("/push")
-        resp = self._do_request(method="POST", url=url, data=form.to_dict())
+        resp = self._do_request(method="POST", url=url, data=form.dict(by_alias=True))
 
         if resp.ok:
             return True

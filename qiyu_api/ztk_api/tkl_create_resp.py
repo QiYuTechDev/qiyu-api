@@ -1,11 +1,9 @@
-from dataclasses import dataclass
 from typing import Optional
 
-from dataclasses_json import DataClassJsonMixin
+from pydantic import BaseModel
 
 
-@dataclass
-class TKLCreateResp(DataClassJsonMixin):
+class TKLCreateResp(BaseModel):
     """
     参见: https://www.zhetaoke.com/user/open/open_tkl_create.aspx
     参见: https://open.taobao.com/api.htm?docId=31127&docType=2

@@ -53,7 +53,7 @@ class ZTKStd(object):
         """
         url = await args.to_http_url()
         ret = await self._do_query(url)
-        resp = GaoYongResp.from_dict(ret)
+        resp = GaoYongResp(**ret)
         if resp.status != 200:
             self._logger.error(f"request ztk {url=} failed with: {resp=}")
             return None
@@ -113,7 +113,7 @@ class ZTKStd(object):
         """
         url = await args.to_http_url()
         j = await self._do_query(url)
-        return BatchItemResp.from_dict(j)
+        return BatchItemResp(**j)
 
     async def guess_you_like(
         self, args: GuessYouLikeArgs

@@ -1,9 +1,8 @@
-from dataclasses import dataclass
 from datetime import datetime
 from decimal import Decimal
 from typing import Optional, Any, List
 
-from dataclasses_json import DataClassJsonMixin
+from pydantic import BaseModel
 
 __all__ = ["OrderDetailsResp", "OrderDto", "TkStatusEnum"]
 
@@ -15,8 +14,7 @@ class TkStatusEnum(object):
     success = 14  # 确认收货
 
 
-@dataclass
-class OrderDto(DataClassJsonMixin):
+class OrderDto(BaseModel):
     # 订单在淘宝拍下付款的时间
     tb_paid_time: Optional[str] = None
     # 订单付款的时间，该时间同步淘宝，可能会略晚于买家在淘宝的订单创建时间
@@ -224,8 +222,7 @@ class OrderDto(DataClassJsonMixin):
         return self.tk_status == TkStatusEnum.done
 
 
-@dataclass
-class OrderDetailsResp(DataClassJsonMixin):
+class OrderDetailsResp(BaseModel):
     has_next: bool
     has_pre: bool
     page_no: int
@@ -247,7 +244,7 @@ class OrderDetailsResp(DataClassJsonMixin):
         if len(data["results"]) == 0:
             data["results"] = None
 
-        return OrderDetailsResp.from_dict(data)
+        return OrderDetailsResp(**data)
 
     def get_order_lists(self) -> List[OrderDto]:
         if not isinstance(self.results, dict):
@@ -257,4 +254,4 @@ class OrderDetailsResp(DataClassJsonMixin):
         if "publisher_order_dto" in self.results:
             order_list = self.results["publisher_order_dto"]
 
-        return list(map(lambda x: OrderDto.from_dict(x), order_list))
+        return list(map(lambda x: OrderDto(**x), order_list))

@@ -1,9 +1,6 @@
-from dataclasses import dataclass
-
 from .base_args import BaseArgs
 
 
-@dataclass
 class SuggestArgs(BaseArgs):
     """
     联想词 API

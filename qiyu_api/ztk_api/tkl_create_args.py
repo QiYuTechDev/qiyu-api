@@ -1,10 +1,8 @@
-from dataclasses import dataclass
 from typing import Optional
 
 from .base_args import BaseArgs
 
 
-@dataclass
 class TKLCreateArgs(BaseArgs):
     """
     淘口令生成API：二合一链接、长链接、短链接等各种淘宝高佣链接，生成淘口令

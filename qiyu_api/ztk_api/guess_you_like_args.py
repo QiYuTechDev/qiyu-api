@@ -1,10 +1,8 @@
-from dataclasses import dataclass
 from typing import Optional
 
 from .base_args import BaseArgs
 
 
-@dataclass
 class GuessYouLikeArgs(BaseArgs):
     """
     折淘客 猜你喜欢接口参数

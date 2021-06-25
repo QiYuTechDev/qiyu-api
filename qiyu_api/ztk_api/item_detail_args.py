@@ -1,10 +1,8 @@
-from dataclasses import dataclass
 from typing import Optional
 
 from .base_args import BaseArgs
 
 
-@dataclass
 class ItemDetailArgs(BaseArgs):
     """
     折淘客 全网商品详情接口参数

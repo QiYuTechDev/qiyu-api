@@ -1,10 +1,8 @@
-from dataclasses import dataclass
 from typing import Optional
 
 from .base_args import BaseArgs
 
 
-@dataclass
 class ChannelIdListArgs(BaseArgs):
     @staticmethod
     def base_url():

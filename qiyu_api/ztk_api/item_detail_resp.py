@@ -1,11 +1,9 @@
-from dataclasses import dataclass
 from typing import Optional, Dict, List
 
-from dataclasses_json import DataClassJsonMixin
+from pydantic import BaseModel
 
 
-@dataclass
-class ItemDetailResp(DataClassJsonMixin):
+class ItemDetailResp(BaseModel):
     """
     商品详情返回信息
     """

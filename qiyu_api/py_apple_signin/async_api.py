@@ -40,6 +40,6 @@ class AppleSignInAsyncApi(Shared):
         ret = await resp.json()
         assert isinstance(ret, dict)
         if "error" in ret:
-            return AppleSignInFailureRet.from_dict(ret)
+            return AppleSignInFailureRet(**ret)
         else:
-            return AppleSignInSuccessRet.from_dict(ret)
+            return AppleSignInSuccessRet(**ret)

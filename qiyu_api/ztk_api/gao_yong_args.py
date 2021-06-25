@@ -1,10 +1,8 @@
-from dataclasses import dataclass
 from typing import Optional
 
 from .base_args import BaseArgs
 
 
-@dataclass
 class GaoYongArgs(BaseArgs):
     """
     高佣转链API (商品ID)
