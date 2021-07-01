@@ -16,6 +16,6 @@ class TopErrorRespException(Exception):
     返回的结果错误 缺少权限等
     """
 
-    def __int__(self, ret: dict):
+    def __init__(self, ret: dict):
         super().__init__()
         self._ret = ret
