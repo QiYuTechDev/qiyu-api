@@ -17,7 +17,9 @@ class APNsAsync(object):
         推送消息给 指定的 iOS 设备
         """
         url = self._get_url_by_path("/push")
-        resp = await self._do_request(method="POST", url=url, data=form.to_dict())
+        resp = await self._do_request(
+            method="POST", url=url, data=form.dict(by_alias=True)
+        )
 
         if 200 <= resp.status < 300:
             return True

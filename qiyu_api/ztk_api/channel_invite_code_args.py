@@ -1,10 +1,8 @@
-from dataclasses import dataclass
 from typing import Optional
 
 from .base_args import BaseArgs
 
 
-@dataclass
 class ChannelInviteCodeArgs(BaseArgs):
     """
     淘宝客邀请码生成API：生成邀请码，然后让用户进行渠道备案，生成新的渠道ID

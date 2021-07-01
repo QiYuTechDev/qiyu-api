@@ -1,9 +1,6 @@
-from dataclasses import dataclass
-
 from .base_args import BaseArgs
 
 
-@dataclass
 class BatchItemsArgs(BaseArgs):
     """
     批量全网商品详情API接口：可同时获取20个商品的全网商品详情信息

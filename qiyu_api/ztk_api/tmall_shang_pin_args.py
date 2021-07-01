@@ -1,10 +1,8 @@
-from dataclasses import dataclass
 from typing import Optional
 
 from .base_args import BaseArgs
 
 
-@dataclass
 class TMallShangPinArgs(BaseArgs):
     """
     天猫商品API：返回天猫商品列表，返回佣金≥15%，动态描述分≥4.6的商品列表。

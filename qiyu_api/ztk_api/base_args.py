@@ -1,10 +1,10 @@
 import os
 from urllib import parse
 
-from dataclasses_json import DataClassJsonMixin
+from pydantic import BaseModel
 
 
-class BaseArgs(DataClassJsonMixin):
+class BaseArgs(BaseModel):
     """
     折淘客基础请求数据类型
 
@@ -40,7 +40,7 @@ class BaseArgs(DataClassJsonMixin):
         :param appkey:
         :return:
         """
-        d = self.to_dict()
+        d = self.dict(by_alias=True)
         dks = []
         for k in d.keys():
             if d[k] is None:

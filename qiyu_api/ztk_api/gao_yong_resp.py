@@ -1,7 +1,5 @@
-from dataclasses import dataclass
 from typing import List, Any
 
-from dataclasses_json import DataClassJsonMixin
 from pydantic import BaseModel, Field
 
 
@@ -74,7 +72,6 @@ class GaoYongContentItem(BaseModel):
     tkl: str = Field(None)
 
 
-@dataclass
-class GaoYongResp(DataClassJsonMixin):
+class GaoYongResp(BaseModel):
     status: int
     content: List[Any]

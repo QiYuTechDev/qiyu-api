@@ -1,10 +1,8 @@
-from dataclasses import dataclass
 from typing import Optional
 
 from .base_args import BaseArgs
 
 
-@dataclass
 class TMallChaoShiArgs(BaseArgs):
     """
     天猫超市商品API：返回天猫超市商品列表，动态描述分≥4.6的商品列表，根据不同参数可返回天猫超市单件免邮商品。

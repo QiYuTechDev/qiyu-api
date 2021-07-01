@@ -53,7 +53,7 @@ class ZTK(object):
         """
         url = await args.to_http_url()
         j = await self._do_query(url)
-        return BatchItemResp.from_dict(j)
+        return BatchItemResp(**j)
 
     async def channel_account_info(self, args: ChannelAccountInfoArgs):
         args.sid = await self._ztk_sid()
@@ -91,7 +91,7 @@ class ZTK(object):
 
         url = await args.to_http_url()
         j = await self._do_query(url)
-        return ItemDetailV2Resp.from_dict(j)
+        return ItemDetailV2Resp(**j)
 
     async def new_order(self, args: NewOrderArgs):
         """
@@ -111,7 +111,7 @@ class ZTK(object):
 
         url = await args.to_http_url()
         j = await self._do_query(url)
-        return TKLCreateResp.from_dict(j)
+        return TKLCreateResp(**j)
 
     async def do_query(self, url: str) -> dict:
         """

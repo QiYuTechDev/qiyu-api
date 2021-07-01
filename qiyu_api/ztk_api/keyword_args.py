@@ -1,9 +1,6 @@
-from dataclasses import dataclass
-
 from .base_args import BaseArgs
 
 
-@dataclass
 class KeywordArgs(BaseArgs):
     """
     关键词词典

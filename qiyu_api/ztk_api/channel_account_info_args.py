@@ -1,9 +1,6 @@
-from dataclasses import dataclass
-
 from .base_args import BaseArgs
 
 
-@dataclass
 class ChannelAccountInfoArgs(BaseArgs):
     """
     淘宝客渠道信息查询API：获取渠道ID信息列表

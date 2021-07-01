@@ -1,10 +1,8 @@
-from dataclasses import dataclass
 from typing import Optional
 
 from .base_args import BaseArgs
 
 
-@dataclass
 class NewOrderArgs(BaseArgs):
     """
     新订单获取
