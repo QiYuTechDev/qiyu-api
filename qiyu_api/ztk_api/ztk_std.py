@@ -291,20 +291,20 @@ class ZTKStd(object):
         best = coupon_links[0]
 
         for item in coupon_links[1:]:
-            # 当前 没有 coupon URL
-            if best.coupon_click_url is None and item.coupon_click_url is not None:
-                best = item
+            # 没有 优惠券
+            if (
+                item.coupon_click_url is None
+                or item.coupon_click_url == ""
+                or item.tkfee3 is None
+            ):
                 continue
 
-            # 当前 没有佣金 字段
-            if best.tkfee3 is None and item.tkfee3 is not None:
+            if (
+                best.coupon_click_url is None  # 没有优惠URL
+                or best.tkfee3 is None  # 没有佣金
+                or best.tkfee3 < item.tkfee3  # 佣金小
+            ):
                 best = item
                 continue
-
-            # 当前 的佣金小于
-            if best.tkfee3 is not None and item.tkfee3 is not None:
-                if best.tkfee3 < item.tkfee3:
-                    best = item
-                    continue
 
         return best
