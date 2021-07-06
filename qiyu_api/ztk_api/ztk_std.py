@@ -61,7 +61,11 @@ class ZTKStd(object):
             self._logger.info(f"ztk not find: tao_id={args.num_iid}")
             return None
 
-        item = GaoYongContentItem(**resp.content[0])
+        item_list: List[GaoYongContentItem] = list(
+            map(lambda x: GaoYongContentItem(**x), resp.content)
+        )
+
+        item = self._find_best_coupon_link(item_list)
 
         coupon_recv_num = int(item.coupon_total_count) - int(item.coupon_remain_count)
 
@@ -271,3 +275,36 @@ class ZTKStd(object):
             )
 
         return list(map(convert_item_to_std, data_list))
+
+    @staticmethod
+    def _find_best_coupon_link(
+        coupon_links: List[GaoYongContentItem],
+    ) -> GaoYongContentItem:
+        """
+        从高佣返回列表中找到佣金最高的
+        :param coupon_links:
+        :return:
+        """
+        if len(coupon_links) == 1:
+            return coupon_links[0]
+
+        best = coupon_links[0]
+
+        for item in coupon_links[1:]:
+            # 当前 没有 coupon URL
+            if best.coupon_click_url is None and item.coupon_click_url is not None:
+                best = item
+                continue
+
+            # 当前 没有佣金 字段
+            if best.tkfee3 is None and item.tkfee3 is not None:
+                best = item
+                continue
+
+            # 当前 的佣金小于
+            if best.tkfee3 is not None and item.tkfee3 is not None:
+                if best.tkfee3 < item.tkfee3:
+                    best = item
+                    continue
+
+        return best
