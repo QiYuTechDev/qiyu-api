@@ -28,6 +28,7 @@ from .search_args import SearchArgs  # noqa
 from .suggest_args import SuggestArgs  # noqa
 from .tkl_create_args import TKLCreateArgs  # noqa
 from .tkl_create_resp import TKLCreateResp  # noqa
+from .tkl_parse_args import TKLParseArgs  # noqa
 from .tmall_chao_shi_args import TMallChaoShiArgs  # noqa
 from .tmall_shang_pin_args import TMallShangPinArgs  # noqa
 from .ztk import ZTK  # noqa
