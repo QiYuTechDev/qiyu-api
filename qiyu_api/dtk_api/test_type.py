@@ -150,9 +150,11 @@ def test_category_ddq_goods_list():
 
 def test_tb_service_parse_taokouling():
     dtk = get_sync_api()
-    args = TbServiceParseTaokoulingArgs(content="1￥uFkCciFmKQH￥/")
+    tkl = "5NKkX84wYdk"
+    args = TbServiceParseTaokoulingArgs(content=tkl)
     ret = dtk.tb_service_parse_taokouling(args)
     assert ret is not None
+    print(ret)
 
 
 def test_tb_service_creat_taokouling():

@@ -19,6 +19,7 @@ from .keyword_args import KeywordArgs
 from .nine_nine_args import NineNineArgs
 from .search_args import SearchArgs
 from .suggest_args import SuggestArgs
+from .tkl_parse_args import TKLParseArgs
 from .tmall_chao_shi_args import TMallChaoShiArgs
 from .tmall_shang_pin_args import TMallShangPinArgs
 from ..tbk_api import TbkItemInfo
@@ -46,6 +47,14 @@ class ZTKStd(object):
         self._http: Optional[aiohttp.ClientSession] = None
         self._sid = ztk_sid
         self._logger = logger
+
+    async def tkl_parse(self, args: TKLParseArgs) -> Optional[str]:
+        """淘口令解析商品ID"""
+        url = await args.to_http_url()
+        ret = await self._do_query(url)
+        if isinstance(ret, dict) and "item_id" in ret:
+            return ret["item_id"]
+        return None
 
     async def gao_yong(self, args: GaoYongArgs) -> Optional[TbkItemInfo]:
         """

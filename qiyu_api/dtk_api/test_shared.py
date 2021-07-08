@@ -10,7 +10,7 @@ def get_app_key_and_secret() -> (str, str):
     app_key = os.getenv("DTK_APP_KEY")
     app_secret = os.getenv("DTK_APP_SECRET")
     if app_key is None or app_secret is None:
-        with open(os.path.join(os.path.dirname(__file__), "..", "secret.json")) as fp:
+        with open(os.path.join(os.path.dirname(__file__), "../../secret.json")) as fp:
             d = json.load(fp)
             app_key = d["app_key"]
             app_secret = d["app_secret"]

@@ -6,7 +6,10 @@ from structlog.stdlib import get_logger
 from .gao_yong_args import GaoYongArgs
 from .guess_you_like_args import GuessYouLikeArgs
 from .search_args import SearchArgs
+from .tkl_parse_args import TKLParseArgs
 from .ztk_std import ZTKStd
+
+sid = "49522"
 
 
 def set_up_env():
@@ -30,7 +33,6 @@ def get_ztk_std() -> ZTKStd:
     set_up_env()
 
     logger = get_logger()
-    sid = "49522"
 
     return ZTKStd(ztk_sid=sid, logger=logger)
 
@@ -80,3 +82,16 @@ async def test_search_url():
         args = get_gao_yong_args(item.tao_id)
         coupon_list = await ztk.gao_yong(args)
         print(coupon_list)
+
+
+@pytest.mark.asyncio
+async def test_tkl_parse():
+    ztk = get_ztk_std()
+    tkl = "1👈啊5NKkX84wYdk啊 https://m.tb.cn/h.4CEhFr0?sm=70d491 lofree洛斐 小浪无线机械键盘蓝牙双模电竞专用办公电脑茶轴84键"
+    args = TKLParseArgs(content=tkl, sid=sid)
+    tao_id = await ztk.tkl_parse(args=args)
+    assert tao_id is not None
+    args = get_gao_yong_args(tao_id)
+    ret = await ztk.gao_yong(args)
+    assert ret is not None
+    print(ret)
