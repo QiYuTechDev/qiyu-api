@@ -22,6 +22,9 @@ class DtkStdApi(object):
         self, args: TbServiceGetPrivilegeLinkArgs
     ) -> Optional[TbkItemInfo]:
         info = await self._api.tb_service_get_privilege_link(args)
+        if info is None:
+            return None
+
         t = await self.get_goods_detail(args.goodsId)
 
         t.coupon_link = info.couponClickUrl
