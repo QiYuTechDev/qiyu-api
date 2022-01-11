@@ -28,5 +28,10 @@ jobs:
           poetry run pip install pytest
 
       - name: Run Lint
+        env:
+          DTK_APP_KEY: ${{ secrets.DTK_APP_KEY }}
+          DTK_APP_SECRET: ${{ secrets.DTK_APP_SECRET }}
+          ZTK_SID: ${{ secrets.ZTK_SID }}
+          ZTK_APP_KEY: ${{ secrets.ZTK_APP_KEY }}
         run: |
           poetry run pytest ${{ env.PROJECT_NAME }}
