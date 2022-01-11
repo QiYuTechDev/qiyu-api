@@ -20,7 +20,11 @@ class BaseArgs(BaseModel):
     'f2='
     """
 
-    app_key: str = Field(None, title="折淘客的 app key")
+    app_key: str = Field(
+        None,
+        title="折淘客的 app key",
+        description="这个值通常不应该使用用户的传递值, 除非您构建自己的平台，允许用户使用自己的 app key",
+    )
 
     @staticmethod
     def base_url() -> str:
