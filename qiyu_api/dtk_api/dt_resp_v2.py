@@ -709,7 +709,7 @@ class GoodsExclusiveGoodsListResp(BaseModel):
     estimateAmount: int = Field(...)
     freeshipRemoteDistrict: int = Field(...)
     specialText: list = Field(...)
-    tbcid: int = Field(...)
+    tbcid: int = Field(None, title="淘宝分类id", description="商品在淘宝的分类id")
 
 
 class GoodsExplosiveGoodsListResp(BaseModel):
