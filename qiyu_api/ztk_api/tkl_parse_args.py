@@ -4,6 +4,10 @@ from .base_args import BaseArgs
 
 
 class TKLParseArgs(BaseArgs):
+    """
+    :doc: https://www.zhetaoke.com/user/open/open_shangpin_id.aspx
+    """
+
     @staticmethod
     def base_url() -> str:
         return "https://api.zhetaoke.com:10001/api/open_shangpin_id.ashx"

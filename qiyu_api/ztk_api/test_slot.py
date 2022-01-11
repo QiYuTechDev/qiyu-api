@@ -14,6 +14,9 @@ sid = "49522"
 
 def set_up_env():
     file = os.path.join(os.path.dirname(__file__), "../../dev.env")
+    if not os.path.exists(file):
+        return
+
     with open(file) as fp:
         lines = fp.readlines()
     for line in lines:

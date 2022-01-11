@@ -1,7 +1,7 @@
 import os
 from urllib import parse
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class BaseArgs(BaseModel):
@@ -20,18 +20,27 @@ class BaseArgs(BaseModel):
     'f2='
     """
 
+    app_key: str = Field(
+        None,
+        title="折淘客的 app key",
+        description="这个值通常不应该使用用户的传递值, 除非您构建自己的平台，允许用户使用自己的 app key",
+    )
+
     @staticmethod
     def base_url() -> str:
         raise NotImplementedError
 
-    @staticmethod
-    def ztk_app_key() -> str:
+    def ztk_app_key(self) -> str:
         """
         获取 折淘客的 app key
         """
+        if self.app_key is not None:
+            return self.app_key
+
         app_key = os.getenv("ZTK_APP_KEY", None)
         if app_key is not None:
             return app_key
+
         raise NotImplementedError
 
     def to_http_query(self, appkey: str) -> str:
@@ -40,7 +49,7 @@ class BaseArgs(BaseModel):
         :param appkey:
         :return:
         """
-        d = self.dict(by_alias=True)
+        d = self.dict(by_alias=True, exclude={"app_key"})
         dks = []
         for k in d.keys():
             if d[k] is None:
