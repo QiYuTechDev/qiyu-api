@@ -62,6 +62,14 @@ async def test_guess_you_like_and_gao_yong():
 
 
 @pytest.mark.asyncio
+async def test__gao_yong():
+    ztk = get_ztk_std()
+    args = get_gao_yong_args('668022906042')
+    ret = await ztk.gao_yong(args)
+    assert ret is not None
+
+
+@pytest.mark.asyncio
 async def test_keyword():
     ztk = get_ztk_std()
     ret = await ztk.keyword()

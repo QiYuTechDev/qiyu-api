@@ -64,7 +64,7 @@ class ZTKStd(object):
         ret = await self._do_query(url)
         resp = GaoYongResp(**ret)
         if resp.status != 200:
-            self._logger.error(f"request ztk {url=} failed with: {resp=}")
+            self._logger.error(f"request ztk {url=} failed with: {resp=}({ret})")
             return None
         if len(resp.content) == 0:
             self._logger.info(f"ztk not find: tao_id={args.num_iid}")
