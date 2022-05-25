@@ -12,7 +12,7 @@ multidict==6.0.2; python_version >= "3.7"
 pycparser==2.21; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.4.0" and python_version >= "3.6"
 pydantic==1.9.0; python_full_version >= "3.6.1"
 pydes==2.0.1
-pyjwt==2.3.0; python_version >= "3.6"
+pyjwt==2.4.0; python_version >= "3.6"
 requests==2.27.1; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.6.0")
 structlog==21.5.0; python_version >= "3.6"
 typing-extensions==4.0.1; python_version >= "3.6" and python_full_version >= "3.6.1"
